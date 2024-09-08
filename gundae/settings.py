@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gundaeapp',
-    'calendar_app'
+    'calendar_app',
+    'calculator',
 ]
 
 MIDDLEWARE = [

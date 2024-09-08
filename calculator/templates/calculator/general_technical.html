@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공군 일반 기술병 점수 계산기</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 700px;
+            margin-top: 50px;
+        }
+        .card {
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: white;
+            border-radius: 12px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2 class="text-center mb-4">공군 일반 기술병 점수 계산기</h2>
+            <form method="POST" class="mt-4">
+                {% csrf_token %}
+                
+                <!-- 자격/면허 점수 -->
+                <div class="mb-4">
+                    <label for="license_score" class="form-label">자격/면허 점수 (최대 70점):</label>
+                    <select class="form-select" name="license_score" required>
+                        <option value="70">국가기술자격증 - 기사 이상 (70점)</option>
+                        <option value="68">국가기술자격증 - 산업기사 (68점)</option>
+                        <option value="66">국가기술자격증 - 기능사 (66점)</option>
+                        <option value="64">일반자격증 - L6, L5 (64점)</option>
+                        <option value="62">일반자격증 - L4, L3 (62점)</option>
+                        <option value="60">일반자격증 - L2 (60점)</option>
+                        <option value="0">자격증 없음 (0점)</option>
+                    </select>
+                </div>
+
+                <!-- 출결 점수 -->
+                <div class="mb-4">
+                    <label for="attendance_score" class="form-label">출결 점수 (최대 20점):</label>
+                    <select class="form-select" name="attendance_score" required>
+                        <option value="20">결석 0일 (20점)</option>
+                        <option value="19">결석 1~2일 (19점)</option>
+                        <option value="18">결석 3~4일 (18점)</option>
+                        <option value="17">결석 5~6일 (17점)</option>
+                        <option value="16">결석 7일 이상 (16점)</option>
+                    </select>
+                </div>
+
+                <!-- 면접 점수 -->
+                <div class="mb-4">
+                    <label for="interview_score" class="form-label">면접 점수 (최대 35점):</label>
+                    <select class="form-select" name="interview_score" required>
+                        <option value="35">면접 평가 우수 (35점)</option>
+                        <option value="30">면접 평가 보통 (30점)</option>
+                        <option value="25">면접 평가 부족 (25점)</option>
+                    </select>
+                </div>
+
+                <!-- 가산점 -->
+                <div class="mb-4">
+                    <label for="additional_score" class="form-label">가산점 (최대 15점):</label>
+                    <select class="form-select" name="additional_score">
+                        <option value="15">국가유공자 자녀 (15점)</option>
+                        <option value="10">다자녀 가정 자녀 (10점)</option>
+                        <option value="5">사회봉사 활동 (5점)</option>
+                        <option value="0">가산점 없음 (0점)</option>
+                    </select>
+                </div>
+
+                <!-- 계산하기 버튼 -->
+                <button type="submit" class="btn btn-primary w-100">계산하기</button>
+
+                <!-- 초기화 버튼 -->
+                <button type="button" class="btn btn-secondary w-100 mt-3" onclick="resetForm();">
+                    초기화
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 폼 초기화 함수
+        function resetForm() {
+            document.querySelector('form').reset();
+        }
+    </script>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
