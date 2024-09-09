@@ -26,11 +26,17 @@ def general_technical_view(request):
         license_score = int(request.POST.get('license_score', 0))
         attendance_score = int(request.POST.get('attendance_score', 0))
         interview_score = int(request.POST.get('interview_score', 0))
-        additional_score = int(request.POST.get('additional_score', 0))
+        
+        # 가산점은 다중 선택이므로 getlist()로 처리
+        additional_scores = request.POST.getlist('additional_score[]')  # 여러 개 선택 가능
+        additional_score_total = sum([int(score) for score in additional_scores])  # 선택된 가산점 합계 계산
+
+        print(f"추가 점수 리스트: {additional_scores}")
+        print(f"추가 점수 합계: {additional_score_total}")
 
         # 총점 계산
-        total_score = license_score + attendance_score + interview_score + additional_score
-
+        total_score = license_score + attendance_score + interview_score + additional_score_total
+ 
         # 합격 여부 판단 (예측된 커트라인 사용)
         if total_score >= predicted_cutoff:
             result = "합격이 예상됩니다. 잘 다녀오십시오 ^^7"
@@ -46,6 +52,7 @@ def general_technical_view(request):
         })
 
     return render(request, 'calculator/general_technical.html')
+
 
 
 # 커트라인 데이터 설정 (이전 데이터)
