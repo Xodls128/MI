@@ -1,0 +1,79 @@
+.body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.h1 {
+    text-align: center;
+    color: #2C3E50;
+    margin: 40px 0;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+#calendar {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fc-toolbar-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #2C3E50;
+}
+
+.fc-button {
+    background-color: #6c757d;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.fc-daygrid-day-number {
+    color: grey; /* 날짜 번호의 색상을 파란색으로 변경 */
+}
+
+
+.fc-button:hover {
+    background-color: #5a6268;
+}
+
+.fc-button-primary {
+    background-color: #6c757d;
+}
+
+
+/* 이벤트 스타일 */
+.fc-event {
+    background-color: skyblue;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+/* 오늘 날짜 */
+.fc-today {
+    background-color: rgba(108, 117, 125, 0.2);
+}
+
+/* 모달 창 스타일 */
+.modal-header {
+    background-color: #6c757d;
+    color: white;
+}
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+}
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
