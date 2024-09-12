@@ -19,7 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('calendar_app.urls')),
+    path('', include('gundaeapp.urls')),
     path('calculator/', include('calculator.urls')),  # 'calculator' 앱의 URL 포함
 ]
     
