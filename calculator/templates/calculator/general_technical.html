@@ -1,160 +1,113 @@
 <!DOCTYPE html>
-    <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>공군 일반 기술병 점수 계산기</title>
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            body {
-                background-color: #f0f2f5;
-            }
-            .container {
-                max-width: 700px;
-                margin-top: 50px;
-            }
-            .card {
-                padding: 30px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-                background-color: white;
-                border-radius: 12px;
-            }
-            .btn-primary {
-                background-color: #007bff;
-                border-color: #007bff;
-            }
-            .btn-secondary {
-                background-color: #6c757d;
-                border-color: #6c757d;
-            }
-            h2 {
-                font-size: 1.8rem;
-                color: #333;
-            }
-            label {
-                font-weight: bold;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="card">
-                <h2 class="text-center mb-4">공군 일반 기술병 점수 계산기</h2>
-                <form method="POST" class="mt-4">
-                    {% csrf_token %}
-                    
-                    <!-- 자격/면허 점수 -->
-                    <div class="mb-4">
-                        <label for="license_score" class="form-label">자격/면허 점수 (최대 70점):</label>
-                        <select class="form-select" name="license_score" required>
-                            <option value="70">국가기술자격증 - 기사 이상 (70점)</option>
-                            <option value="68">국가기술자격증 - 산업기사 (68점)</option>
-                            <option value="66">국가기술자격증 - 기능사 (66점)</option>
-                            <option value="64">일반자격증 - L6, L5 (64점)</option>
-                            <option value="62">일반자격증 - L4, L3 (62점)</option>
-                            <option value="60">일반자격증 - L2 (60점)</option>
-                            <option value="0">자격증 없음 (0점)</option>
-                        </select>
-                    </div>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공군 일반 기술병 점수 계산기</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center">
 
-                    <!-- 출결 점수 -->
-                    <div class="mb-4">
-                        <label for="attendance_score" class="form-label">출결 점수 (최대 20점):</label>
-                        <select class="form-select" name="attendance_score" required>
-                            <option value="20">결석 0일 (20점)</option>
-                            <option value="19">결석 1~2일 (19점)</option>
-                            <option value="18">결석 3~4일 (18점)</option>
-                            <option value="17">결석 5~6일 (17점)</option>
-                            <option value="16">결석 7일 이상 (16점)</option>
-                        </select>
-                    </div>
+    <div class="container mx-auto p-8 max-w-2xl">
+        <!-- 카드 섹션 -->
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <!-- 제목 -->
+            <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">공군 일반 기술병 점수 계산기</h1>
+            <p class="text-center text-gray-600 mb-10">아래에서 골라 합격을 예측해보세요!</p>
+            
+            <!-- 폼 시작 -->
+            <form method="POST" class="space-y-8">
+                {% csrf_token %}
+                
+                <!-- 자격/면허 점수 (오름차순 정렬) -->
+                <div>
+                    <label for="license_score" class="block text-lg font-semibold text-gray-700 mb-2">자격/면허 점수</label>
+                    <p class="text-sm text-gray-500 mb-3">기술 자격증에 따라 점수가 다르게 부여됩니다. (최대 70점)</p>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="license_score" required>
+                        <option value="0">자격증 없음 (0점)</option>
+                        <option value="60">일반자격증 - L2 (60점)</option>
+                        <option value="62">일반자격증 - L4, L3 (62점)</option>
+                        <option value="64">일반자격증 - L6, L5 (64점)</option>
+                        <option value="66">국가기술자격증 - 기능사 (66점)</option>
+                        <option value="68">국가기술자격증 - 산업기사 (68점)</option>
+                        <option value="70">국가기술자격증 - 기사 이상 (70점)</option>
+                    </select>
+                </div>
 
-                    <!-- 면접 점수 -->
-                    <div class="mb-4">
-                        <label for="interview_score" class="form-label">면접 점수 (최대 35점):</label>
-                        <select class="form-select" name="interview_score" required>
-                            <option value="35">면접 평가 우수 (35점)</option>
-                            <option value="30">면접 평가 보통 (30점)</option>
-                            <option value="25">면접 평가 부족 (25점)</option>
-                        </select>
-                    </div>
+                <!-- 출결 점수 (오름차순 정렬) -->
+                <div>
+                    <label for="attendance_score" class="block text-lg font-semibold text-gray-700 mb-2">출결 점수</label>
+                    <p class="text-sm text-gray-500 mb-3">결석 일수에 따른 점수 (최대 20점)</p>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="attendance_score" required>
+                        <option value="16">결석 7일 이상 (16점)</option>
+                        <option value="17">결석 5~6일 (17점)</option>
+                        <option value="18">결석 3~4일 (18점)</option>
+                        <option value="19">결석 1~2일 (19점)</option>
+                        <option value="20">결석 0일 (20점)</option>
+                    </select>
+                </div>
 
-                    <!-- 가산점 (다중 선택 가능) -->
-                    <div class="mb-4">
-                        <label for="additional_score" class="form-label">가산점 (최대 15점, 여러 개 선택 가능):</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="4" id="option1">
-                            <label class="form-check-label" for="option1">국가 유공자 자녀, 독립유공자 자녀/손자녀 (4점)</label>
+                <!-- 면접 점수 (오름차순 정렬) -->
+                <div>
+                    <label for="interview_score" class="block text-lg font-semibold text-gray-700 mb-2">면접 점수</label>
+                    <p class="text-sm text-gray-500 mb-3">면접 평가 결과에 따른 점수 (최대 35점)</p>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="interview_score" required>
+                        <option value="25">면접 평가 부족 (25점)</option>
+                        <option value="30">면접 평가 보통 (30점)</option>
+                        <option value="35">면접 평가 우수 (35점)</option>
+                    </select>
+                </div>
+
+                <!-- 가산점 (오름차순 정렬, 다중 선택 가능) -->
+                <div>
+                    <label for="additional_score" class="block text-lg font-semibold text-gray-700 mb-2">가산점</label>
+                    <p class="text-sm text-gray-500 mb-3">최대 15점, 여러 항목을 선택할 수 있습니다.</p>
+                    <div class="grid grid-cols-1 gap-2">
+                        <!-- 가산점 항목 (오름차순 정렬) -->
+                        <div class="flex items-center">
+                            <input type="checkbox" name="additional_score[]" value="1" id="option9" class="mr-2">
+                            <label for="option9">병역진로설계 군 추천특기 (1점)</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="4" id="option2">
-                            <label class="form-check-label" for="option2">질병치유 자진입대 (4점)</label>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="additional_score[]" value="2" id="option6" class="mr-2">
+                            <label for="option6">다자녀(2인) 가정자녀 (2점)</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="4" id="option3">
-                            <label class="form-check-label" for="option3">전시근로역에서 현역병 입영대상으로 역종 변경 (4점)</label>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="additional_score[]" value="2" id="option10" class="mr-2">
+                            <label for="option10">한국사능력검정 1, 2급 (2점)</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="4" id="option4">
-                            <label class="form-check-label" for="option4">국외이주자 중 현역복무지원자 (4점)</label>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="additional_score[]" value="4" id="option1" class="mr-2">
+                            <label for="option1">국가 유공자 자녀/손자녀 (4점)</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="4" id="option5">
-                            <label class="form-check-label" for="option5">다자녀(3명 이상) 가정자녀 (4점)</label>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="additional_score[]" value="4" id="option2" class="mr-2">
+                            <label for="option2">질병치유 자진입대 (4점)</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="2" id="option6">
-                            <label class="form-check-label" for="option6">다자녀(2인) 가정자녀 (2점)</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="4" id="option7">
-                            <label class="form-check-label" for="option7">경제적 약자 지원대상 (4점)</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="8" id="option8">
-                            <label class="form-check-label" for="option8">사회봉사 활동 64시간 이상 또는 헌혈 8회 (8점)</label>
-                        </div>
-                        <!-- 추가 가산점 항목도 동일하게 적용 -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="1" id="option9">
-                            <label class="form-check-label" for="option9">병역진로설계 군 추천특기 (1점)</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="2" id="option10">
-                            <label class="form-check-label" for="option10">한국사능력검정 1, 2급 (2점)</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="1" id="option11">
-                            <label class="form-check-label" for="option11">한국사능력검정 3, 4급 (1점)</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="2" id="option12">
-                            <label class="form-check-label" for="option12">TOEIC 730 이상, TOEFL 82 이상, New TEPS 277 이상 (2점)</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="additional_score[]" value="1" id="option13">
-                            <label class="form-check-label" for="option13">TOEIC 520~729, TOEFL 59~81, New TEPS 201~276 (1점)</label>
+                        <div class="flex items-center">
+                            <input type="checkbox" name="additional_score[]" value="4" id="option3" class="mr-2">
+                            <label for="option3">현역병 입영대상으로 역종 변경 (4점)</label>
                         </div>
                     </div>
+                </div>
 
-                    <!-- 계산하기 버튼 -->
-                    <button type="submit" class="btn btn-primary w-100">계산하기</button>
+                <!-- 계산하기 버튼 -->
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition duration-300">점수 계산하기</button>
 
-                    <!-- 초기화 버튼 -->
-                    <button type="button" class="btn btn-secondary w-100 mt-3" onclick="resetForm();">
-                        초기화
-                    </button>
-                </form>
-            </div>
+                <!-- 초기화 버튼 -->
+                <button type="button" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg font-semibold mt-4 transition duration-300" onclick="resetForm();">초기화</button>
+            </form>
         </div>
+    </div>
 
-        <script>
-            // 폼 초기화 함수
-            function resetForm() {
-                document.querySelector('form').reset();
-            }
-        </script>
+    <script>
+        // 폼 초기화 함수
+        function resetForm() {
+            document.querySelector('form').reset();
+        }
+    </script>
 
-        <!-- Bootstrap JS (optional) -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

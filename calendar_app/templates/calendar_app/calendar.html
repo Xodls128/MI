@@ -35,7 +35,7 @@
         }
 
         #calendar {
-            max-width: 1100px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             background-color: white;
@@ -58,6 +58,11 @@
             border-radius: 5px;
         }
 
+        .fc-daygrid-day-number {
+            color: grey; /* 날짜 번호의 색상을 파란색으로 변경 */
+        }
+
+        
         .fc-button:hover {
             background-color: #5a6268;
         }
@@ -66,28 +71,10 @@
             background-color: #6c757d;
         }
 
-        /* 요일 헤더 텍스트 색상 (월~금은 검정색, 토는 파란색, 일은 빨간색) */
-        .fc-col-header-cell.fc-day-sun {
-            color: red;
-        }
-        .fc-col-header-cell.fc-day-sat {
-            color: blue;
-        }
-        .fc-col-header-cell:not(.fc-day-sun):not(.fc-day-sat) {
-            color: black;
-        }
-
-        /* 날짜 셀 텍스트 색상 (토요일, 일요일만 색상 변경) */
-        .fc-daygrid-day.fc-day-sun {
-            color: red;
-        }
-        .fc-daygrid-day.fc-day-sat {
-            color: blue;
-        }
 
         /* 이벤트 스타일 */
         .fc-event {
-            background-color: #4CAF50;
+            background-color: skyblue;
             border: none;
             color: white;
             font-weight: 600;
@@ -97,7 +84,7 @@
 
         /* 오늘 날짜 */
         .fc-today {
-            background-color: rgba(108, 117, 125, 0.2) !important;
+            background-color: rgba(108, 117, 125, 0.2);
         }
 
         /* 모달 창 스타일 */
@@ -130,7 +117,7 @@
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    right: 'dayGridMonth'
                 },
                 buttonText: {
                     today: '오늘',
