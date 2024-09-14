@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공군 전문 기술병 점수 계산기</title>
+    <style href="../gundaeapp/static/style.css"></style>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="container mx-auto p-8 max-w-2xl">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <!-- 제목 -->
+            <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">공군 전문 기술병 점수 계산기</h2>
+            <p class="text-center text-gray-600 mb-10">아래에서 선택하여 합격 가능성을 예측해보세요!</p>
+            
+            <!-- 폼 시작 -->
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+
+                <!-- 기술병 선택 -->
+                <div>
+                    <label for="job_category" class="block text-lg font-semibold text-gray-700 mb-2">지원할 직종을 선택하세요:</label>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="job_category" required>
+                        <option value="전자계산">전자계산</option>
+                        <option value="화생방">화생방</option>
+                        <option value="의무">의무</option>
+                        <option value="기계">기계</option>
+                        <option value="차량운전">차량운전</option>
+                        <option value="차량정비">차량정비</option>
+                        <option value="통신전자전기">통신전자전기</option>
+                    </select>
+                </div>
+
+                <!-- 자격/면허 점수 -->
+                <div>
+                    <label for="license_score" class="block text-lg font-semibold text-gray-700 mb-2">자격/면허 점수 (최대 50점):</label>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="license_score" required>
+                        <option value="0">자격증 없음 (0점)</option>
+                        <option value="20">운전면허 2종보통 (20점)</option>
+                        <option value="26">일반자격증 - L4, L3 (26점)</option>
+                        <option value="30">일반자격증 - L6, L5 (30점)</option>
+                        <option value="40">국가기술자격증 - 기능사 (40점)</option>
+                        <option value="45">국가기술자격증 - 산업기사 (45점)</option>
+                        <option value="50">국가기술자격증 - 기사 이상, 대형/특수 면허 (50점)</option>
+                    </select>
+                </div>
+
+                <!-- 전공 점수 (대학/전문대/고졸) -->
+                <div>
+                    <label for="major_score" class="block text-lg font-semibold text-gray-700 mb-2">전공 점수 (최대 40점):</label>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="major_score" required>
+                        <option value="20">고졸 비전공 (20점)</option>
+                        <option value="34">고졸 전공 (34점)</option>
+                        <option value="28">1년 전문대 재학 (28점)</option>
+                        <option value="32">2년 전문대 수료 (32점)</option>
+                        <option value="36">3년 전문대 졸업 (36점)</option>
+                        <option value="40">4년제 대학 졸업 (40점)</option>
+                    </select>
+                </div>
+
+                <!-- 출결 점수 (고교 출결 기준) -->
+                <div>
+                    <label for="attendance_score" class="block text-lg font-semibold text-gray-700 mb-2">출결 점수 (최대 10점):</label>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="attendance_score" required>
+                        <option value="6">결석 7일 이상 (6점)</option>
+                        <option value="7">결석 5~6일 (7점)</option>
+                        <option value="8">결석 3~4일 (8점)</option>
+                        <option value="9">결석 1~2일 (9점)</option>
+                        <option value="10">결석 0일 (10점)</option>
+                    </select>
+                </div>
+
+                <!-- 면접 점수 -->
+                <div>
+                    <label for="interview_score" class="block text-lg font-semibold text-gray-700 mb-2">면접 점수 (최대 25점):</label>
+                    <select class="block w-full p-3 border rounded-lg text-gray-700 focus:ring-2 focus:ring-blue-500" name="interview_score" required>
+                        <option value="15">면접 평가 부족 (15점)</option>
+                        <option value="20">면접 평가 보통 (20점)</option>
+                        <option value="25">면접 평가 우수 (25점)</option>
+                    </select>
+                </div>
+
+                <!-- 가산점 (다중 선택 가능) -->
+                <div>
+                    <label for="additional_score" class="block text-lg font-semibold text-gray-700 mb-2">가산점 (최대 15점, 여러 개 선택 가능):</label>
+                    <div class="grid grid-cols-1 gap-2">
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="1" id="option9">
+                            <label for="option9">병역진로설계 군 추천특기 (1점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="2" id="option6">
+                            <label for="option6">다자녀(2인) 가정자녀 (2점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="2" id="option10">
+                            <label for="option10">한국사능력검정 1, 2급 (2점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="4" id="option1">
+                            <label for="option1">국가 유공자 자녀/손자녀 (4점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="4" id="option2">
+                            <label for="option2">질병치유 자진입대 (4점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="4" id="option3">
+                            <label for="option3">현역병 입영대상으로 역종 변경 (4점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="4" id="option4">
+                            <label for="option4">국외이주자 중 현역복무지원자 (4점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="4" id="option5">
+                            <label for="option5">다자녀(3명 이상) 가정자녀 (4점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="4" id="option7">
+                            <label for="option7">경제적 약자 지원대상 (4점)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input class="mr-2" type="checkbox" name="additional_score[]" value="8" id="option8">
+                            <label for="option8">사회봉사 활동 64시간 이상 또는 헌혈 8회 (8점)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 계산하기 버튼 -->
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition duration-300">점수 계산하기</button>
+               
+                <!-- 초기화 버튼 -->
+                <button type="button" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg font-semibold mt-4 transition duration-300" onclick="resetForm();">초기화</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 폼 초기화 함수
+        function resetForm() {
+            document.querySelector('form').reset();
+        }
+    </script>
+
+</body>
+</html>
