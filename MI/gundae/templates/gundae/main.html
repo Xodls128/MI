@@ -31,20 +31,32 @@
 
 
 <body>
+    <!-- 베너 -->
     <div class="banner">
         <p>베너 위치</p>
+      
     </div>
     <div id="fullPage">
+
+    <!-- 메인페이지_켈린더 -->
+
         <div class="section fp-auto-height" id="calender">
             <!-- id 개중요 이게 js랑 연결되서 랜더링됨 -->
             <p>1</p>
         </div>
 
-
+    <!-- 메인페이지_계산기와_지원신청 -->
         <div class="section" id="mainpage">
-            <p>2
-                
-            </p>
+            
+            <div class="calcultor">
+                <div class="general_tech" id="general_tech">
+                    <p>111</p>
+                </div>
+                <div class="special_tech">
+
+                </div>
+            </div>
+            
         </div>
     </div>
 
@@ -81,5 +93,13 @@
     
     <!-- 켈린더 스크립트 -->
      <script src="{% static 'jss/calender.js' %}"></script>
-</body>
+
+     <!-- 계산기 스크립트 -->
+     <!-- 일반 지원 -->
+     <script src="{% static 'jss/GeneralTechCalculator.js' %}"></script>
+    
+     <!-- 특별 지원 -->
+     <script src="{% static 'jss/SpecialTechCalculator.js' %}"></script>
+
+    </body>
 </html>
