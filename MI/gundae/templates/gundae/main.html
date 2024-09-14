@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메인페이지</title>
-
+    {% load static %}
     <!-- 외부 css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css">
 
@@ -25,16 +25,17 @@
 
 
     <!-- 내부 css -->
-    {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 
 
 <body>
-    <h1>1</h1>
+    <div class="banner">
+        <p>베너 위치</p>
+    </div>
     <div id="fullPage">
-        <div class="section" id="calender">
+        <div class="section fp-auto-height" id="calender">
             <!-- id 개중요 이게 js랑 연결되서 랜더링됨 -->
             <p>1</p>
         </div>
@@ -56,9 +57,7 @@
     <script>
         new fullpage('#fullPage', {
             // 옵션 설정
-            // sectionsColor: ['#ff5f45', '#0798ec'],
-            navigation: true,
-            navigationPosition: 'right',
+            navigation: false,
             navigationTooltips: ['First section', 'Second section'],
             showActiveTooltip: true,
             slidesNavigation: true,
@@ -72,8 +71,12 @@
     <script>
         new fullpage('#fullpage', {
             autoScrolling: true,
-            navigation: true
+            navigation: true,
+            
         });
+        
+
+        
     </script>
     
     <!-- 켈린더 스크립트 -->

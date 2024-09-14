@@ -19,5 +19,3 @@ def event_data(request):
         })
     return JsonResponse(event_list, safe=False)
 
-def calendar_view(request):
-    return render(request, )

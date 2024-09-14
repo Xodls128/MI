@@ -13,14 +13,6 @@
     font-size: 2.5rem;
 }
 
-#calendar {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
 
 .fc-toolbar-title {
     font-size: 1.75rem;
@@ -76,4 +68,31 @@
 }
 .modal-footer .btn-secondary:hover {
     background-color: #5a6268;
+}
+
+/* 베너 */
+.banner{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    color: black;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: background 0.3 ease;
+    backdrop-filter: blur(7px);
+
+}
+
+/* section */
+.section{
+    margin-top: 90px;
+    padding: 10px 20px;
 }
