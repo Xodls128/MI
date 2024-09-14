@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'ko',
-        events: '/calendar/events/',  // Django에서 데이터를 가져올 URL
+        // events: '/calendar/events/',  // Django에서 데이터를 가져올 URL
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',

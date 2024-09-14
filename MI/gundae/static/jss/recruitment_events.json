@@ -1,6 +1,6 @@
 [
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "기술행정병",
@@ -12,7 +12,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "동반입대병",
@@ -24,7 +24,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "연고지복무병",
@@ -36,7 +36,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "직계가족 복무부대병",
@@ -48,7 +48,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "프랑스어어학병",
@@ -60,7 +60,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "독일어어학병",
@@ -72,7 +72,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "일본어어학병",
@@ -84,7 +84,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "중국어어학병",
@@ -96,7 +96,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "러시아어어학병",
@@ -108,7 +108,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "군사과학기술병",
@@ -120,7 +120,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "탐지분석병",
@@ -132,7 +132,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "육군",
             "모집분야": "사이버작전병",
@@ -144,7 +144,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "해군",
             "모집분야": "",
@@ -156,7 +156,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "해병대",
             "모집분야": "",
@@ -168,7 +168,7 @@
         }
     },
     {
-        "model": "calendar_app.recruitmentevent",
+        "model": "gundae.recruitmentevent",
         "fields": {
             "군별": "공군",
             "모집분야": "",
