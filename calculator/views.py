@@ -1,14 +1,11 @@
-# calculator/views.py
+from django.http import JsonResponse
 from django.shortcuts import render
-from .forms import GeneralTechnicalForm, SpecialTechnicalForm
-# calculator/views.py
-from django.shortcuts import render
-import numpy as np
 from sklearn.linear_model import LinearRegression
+import numpy as np
 
-# 커트라인과 지원자 수 데이터 (과거 데이터)
-past_cutoff_scores = np.array([84.0, 87.0, 91.0, 95.0, 97.0, 97.0, 95.0, 95.0, 95.0, 95.0]).reshape(-1, 1)
-applicant_numbers = np.array([580, 1350, 1275, 986, 1148, 1298, 1090, 1032, 870, 573])
+# 과거 커트라인 점수와 지원자 수 데이터를 정의합니다.
+applicant_numbers = np.array([500, 550, 600, 650, 700, 750])
+past_cutoff_scores = np.array([90, 92, 94, 96, 98, 100])
 
 def general_technical_view(request):
     # 머신러닝 모델 (회귀 분석)
@@ -16,7 +13,7 @@ def general_technical_view(request):
     model.fit(applicant_numbers.reshape(-1, 1), past_cutoff_scores)
 
     # 지원자 수 예측을 위한 사용자 입력
-    predicted_cutoff = model.predict([[573]])[0][0]  # 최근 지원자 수에 맞춰 예측
+    predicted_cutoff = model.predict([[573]])[0]  # 예측된 커트라인
 
     # 기준 커트라인 점수
     last_cutoff_score = 95.0  # 가장 최근 커트라인
@@ -28,29 +25,28 @@ def general_technical_view(request):
         interview_score = int(request.POST.get('interview_score', 0))
         
         # 가산점은 다중 선택이므로 getlist()로 처리
-        additional_scores = request.POST.getlist('additional_score[]')  # 여러 개 선택 가능
-        additional_score_total = sum([int(score) for score in additional_scores])  # 선택된 가산점 합계 계산
-
-        print(f"추가 점수 리스트: {additional_scores}")
-        print(f"추가 점수 합계: {additional_score_total}")
+        additional_scores = request.POST.getlist('additional_score[]')
+        additional_score_total = sum([int(score) for score in additional_scores])
 
         # 총점 계산
         total_score = license_score + attendance_score + interview_score + additional_score_total
- 
+
         # 합격 여부 판단 (예측된 커트라인 사용)
         if total_score >= predicted_cutoff:
             result = "합격이 예상됩니다. 잘 다녀오십시오 ^^7"
         else:
             result = "불합격이 예상됩니다.. 조금 더 부족한 부분을 채워봅시다."
 
-        # 결과 페이지로 총점, 이전 커트라인, 예측 커트라인과 함께 전송
-        return render(request, 'calculator/result.html', {
-            'total': total_score, 
-            'result': result, 
-            'last_cutoff': last_cutoff_score, 
-            'predicted_cutoff': predicted_cutoff
-        })
+        # AJAX 요청인지 확인하여 처리
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest' or request.accepts('application/json'):
+            return JsonResponse({
+                'total_score': total_score,
+                'result': result,
+                'last_cutoff': last_cutoff_score,
+                'predicted_cutoff': predicted_cutoff
+            })
 
+    # 기본 페이지 렌더링
     return render(request, 'calculator/general_technical.html')
 
 

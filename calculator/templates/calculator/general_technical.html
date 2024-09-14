@@ -18,7 +18,7 @@
             <p class="text-center text-gray-600 mb-10">아래에서 골라 합격을 예측해보세요!</p>
             
             <!-- 폼 시작 -->
-            <form method="POST" class="space-y-8">
+            <form method="POST" class="space-y-8" id="score-form">  <!-- 폼에 id 추가 -->
                 {% csrf_token %}
                 
                 <!-- 자격/면허 점수 (오름차순 정렬) -->
@@ -65,7 +65,6 @@
                     <label for="additional_score" class="block text-lg font-semibold text-gray-700 mb-2">가산점</label>
                     <p class="text-sm text-gray-500 mb-3">최대 15점, 여러 항목을 선택할 수 있습니다.</p>
                     <div class="grid grid-cols-1 gap-2">
-                        <!-- 가산점 항목 (오름차순 정렬) -->
                         <div class="flex items-center">
                             <input type="checkbox" name="additional_score[]" value="1" id="option9" class="mr-2">
                             <label for="option9">병역진로설계 군 추천특기 (1점)</label>
@@ -98,8 +97,10 @@
 
                 <!-- 초기화 버튼 -->
                 <button type="button" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-3 rounded-lg font-semibold mt-4 transition duration-300" onclick="resetForm();">초기화</button>
-            </form>
-        </div>
+                    <!-- 결과를 표시할 영역 -->
+                <div id="result" class="mt-8 bg-green-100 p-4 rounded-lg text-center text-lg"></div>
+                    </form>
+                </div>
     </div>
 
     <script>
@@ -108,6 +109,52 @@
             document.querySelector('form').reset();
         }
     </script>
+
+    <script>
+        // 폼 제출 이벤트 핸들러
+        document.getElementById('score-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // 기본 동작 방지
+        
+            const formData = new FormData(this);  // 폼 데이터 수집
+        
+            // AJAX 요청
+            fetch("{% url 'general_technical' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value  // CSRF 토큰 추가
+                }
+            })
+            .then(response => {
+                // 응답이 JSON 형태인지 확인
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();  // JSON으로 변환
+            })
+            .then(data => {
+                // 응답 데이터 처리
+                console.log(data);  // 콘솔에 출력 (디버깅용)
+        
+                if (data.total_score) {
+                    document.getElementById('result').innerHTML = `
+                        <p>총점: ${data.total_score}점</p>
+                        <p>결과: ${data.result}</p>
+                        <p>예상 커트라인: ${data.predicted_cutoff}점</p>
+                        <p>가장 최근 커트라인: ${data.last_cutoff}점</p>
+                    `;
+                } else {
+                    document.getElementById('result').innerHTML = '응답 데이터를 처리할 수 없습니다.';
+                }
+            })
+            .catch(error => {
+                // 에러 처리
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '오류가 발생했습니다. 다시 시도해 주세요.';
+            });
+        });
+    </script>
+    
 
 </body>
 </html>
