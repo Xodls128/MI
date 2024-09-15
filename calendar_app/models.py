@@ -1,13 +1,16 @@
+# models.py
+
 from django.db import models
 
-class RecruitmentEvent(models.Model):
-    군별 = models.CharField(max_length=100)
-    모집분야 = models.CharField(max_length=100)
-    접수기간 = models.CharField(max_length=100, blank=True, null=True)
-    일차합격자발표 = models.CharField(max_length=100, blank=True, null=True)
-    최종합격자발표 = models.CharField(max_length=100, blank=True, null=True)
-    입영월 = models.CharField(max_length=100, blank=True, null=True)
-    모집인원 = models.IntegerField(blank=True, null=True)
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+    content = models.TextField(blank=True, null=True)  # 추가적인 설명 필드
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    color = models.CharField(max_length=7, default='#3788d8')  # HEX 코드 색상 필드
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.군별} - {self.모집분야}"
+        return self.title
