@@ -12,18 +12,26 @@
   <!-- FullCalendar CSS -->
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- fullPage.js CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.13/fullpage.min.css" />
 
   <style>
+
+
+    
+    @font-face {
+      font-family: 'Paperlogy-8ExtraBold';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+  }
+
     /* 기본 스타일 */
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Paperlogy-8ExtraBold', sans-serif;
       height: 100%;
       width: 100%;
     }
@@ -178,6 +186,18 @@
       cursor: pointer;
       color: #555;
     }
+
+
+    {% comment %} 네비게이션 스타일 그런데 글자 색상은 안바뀜 {% endcomment %}
+    .fp-tooltip {
+      background-color: #333; /* 툴팁의 배경색 */
+      color: white; /* 텍스트 색상 */
+      padding: 10px 20px; /* 내부 여백 */
+      border-radius: 4px; /* 테두리 둥글기 */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2)d; /* 그림자 효과 */
+  }
+
+    
   </style>
 </head>
 <body>
@@ -186,7 +206,7 @@
     <div class="section" data-anchor="section1" id="section1">
       <!-- 콘텐츠 박스 -->
       <div class="content-wrapper text-center z-10 px-8 py-16 bg-white bg-opacity-80 shadow-xl rounded-lg">
-        <h1 class="text-6xl font-extrabold text-blue-600 animate-fade-in">🪖 공군 지원 정보 서비스</h1><br>
+        <h1 class="text-6xl font-extrabold text-blue-600 animate-fade-in">공군 지원 정보 서비스</h1><br>
         <h1 class="text-6xl font-extrabold text-blue-600 animate-fade-in">"참고해라"</h1>
         <p class="mt-6 text-xl text-gray-800">가기 싫은 군대, 공군이라도 가자..</p>
         <p class="mt-6 text-xl text-gray-800">아래로 스크롤해 지원 정보와 합격 가능성을 알아보자.</p>
@@ -252,13 +272,18 @@
 
         <!-- 가산점 -->
         <div>
-          <label class="block text-lg font-semibold text-gray-700 mb-2">가산점</label>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+          <label class="block text-lg font-semibold text-gray-700 mb-2">가산점(최대 15점)</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-4">
             <div class="flex items-center space-x-2">
               <input type="checkbox" name="additional_score[]" value="1" id="option9" class="form-checkbox h-4 w-4 text-blue-600">
               <label for="option9" class="text-sm text-gray-700">병역진로설계 군 추천특기 (1점)</label>
             </div>
         
+            <!-- 국가 유공자 자녀/손자녀 -->
+            <div class="flex items-center space-x-2">
+              <input type="checkbox" name="additional_score[]" value="4" id="option1" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
+              <label for="option1" class="text-gray-700 text-sm">국가 유공자 자녀/손자녀 (4점)</label>
+            </div>
             <!-- 다자녀(2인) 가정자녀 -->
             <div class="flex items-center space-x-2">
               <input type="checkbox" name="additional_score[]" value="2" id="option6" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
@@ -272,11 +297,7 @@
             </div>
         
         
-            <!-- 국가 유공자 자녀/손자녀 -->
-            <div class="flex items-center space-x-2">
-              <input type="checkbox" name="additional_score[]" value="4" id="option1" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
-              <label for="option1" class="text-gray-700 text-sm">국가 유공자 자녀/손자녀 (4점)</label>
-            </div>
+
         
             <!-- 질병치유 자진입대 -->
             <div class="flex items-center space-x-2">
@@ -304,43 +325,67 @@
               <label for="option7" class="text-gray-700 text-sm">경제적 약자 지원대상 (4점)</label>
             </div>
         
-            <!-- 사회봉사활동 경력 -->
-            <div class="flex items-center space-x-2">
-              <input type="checkbox" name="additional_score[]" value="8" id="option8" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
-              <label for="option8" class="text-gray-700 text-sm">사회봉사활동 경력 (최대 8점)</label>
-            </div>
-                
-            <!-- TOEIC 520 ~ 729점 -->
-            <div class="flex items-center space-x-2">
-              <input type="checkbox" name="additional_score[]" value="1" id="option14" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
-              <label for="option14" class="text-gray-700 text-sm">TOEIC 520 ~ 729점 (1점)</label>
-            </div>
-        
-            <!-- TOEIC 730점 이상 -->
-            <div class="flex items-center space-x-2">
-              <input type="checkbox" name="additional_score[]" value="2" id="option15" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
-              <label for="option15" class="text-gray-700 text-sm">TOEIC 730점 이상 (2점)</label>
-            </div>
+  
+  <!-- 2개씩 그리드로 배치 -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    
+    <!-- 사회봉사활동 드롭다운 -->
+    <div>
+      <label for="volunteerScore" class="block text-sm font-semibold text-gray-700 mb-2">사회봉사활동 점수</label>
+      <select name="additional_score[]" id="volunteerScore" class="w-full border-gray-300 rounded-md shadow-sm">
+        <option value="">없음</option>
+        <option value="1">8시간 이상 - 1점</option>
+        <option value="2">16시간 이상 - 2점</option>
+        <option value="3">24시간 이상 - 3점</option>
+        <option value="4">32시간 이상 - 4점</option>
+        <option value="5">40시간 이상 - 5점</option>
+        <option value="6">48시간 이상 - 6점</option>
+        <option value="7">56시간 이상 - 7점</option>
+        <option value="8">64시간 이상 - 8점</option>
+      </select>
+    </div>
 
-            <!-- 한국어능력검정 1, 2급 -->
-            <div class="flex items-center space-x-2">
-              <input type="checkbox" name="additional_score[]" value="2" id="option17" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
-              <label for="option17" class="text-gray-700 text-sm">한국어능력검정 1, 2급 (2점)</label>
-            </div>
-            <!-- 한국어능력검정 3, 4급 -->
-            <div class="flex items-center space-x-2">
-              <input type="checkbox" name="additional_score[]" value="1" id="option16" class="form-checkbox h-4 w-4 text-blue-600 align-middle">
-              <label for="option16" class="text-gray-700 text-sm">한국어능력검정 3, 4급 (1점)</label>
-            </div>
-        
+    <!-- 헌혈 드롭다운 -->
+    <div>
+      <label for="bloodDonationScore" class="block text-sm font-semibold text-gray-700 mb-2">헌혈 점수</label>
+      <select name="additional_score[]" id="bloodDonationScore" class="w-full border-gray-300 rounded-md shadow-sm">
+        <option value="">없음</option>
+        <option value="1">1회 - 1점</option>
+        <option value="2">2회 - 2점</option>
+        <option value="3">3회 - 3점</option>
+        <option value="4">4회 - 4점</option>
+        <option value="5">5회 - 5점</option>
+        <option value="6">6회 - 6점</option>
+        <option value="7">7회 - 7점</option>
+        <option value="8">8회 - 8점</option>
+      </select>
+    </div>
 
-          </div>
-        </div>
-        
+    <!-- TOEIC 선택 -->
+    <div>
+      <label for="toeicScore" class="block text-sm font-semibold text-gray-700 mb-2">TOEIC 점수</label>
+      <select name="additional_score[]" id="toeicScore" class="w-full border-gray-300 rounded-md shadow-sm">
+        <option value="0">없음</option>
+        <option value="1">520 ~ 729점 - 1점</option>
+        <option value="2">730점 이상 - 2점</option>
+      </select>
+    </div>
+
+    <!-- 한국사능력검정 선택 -->
+    <div>
+      <label for="koreanHistoryScore" class="block text-sm font-semibold text-gray-700 mb-2">한국사능력검정 점수</label>
+      <select name="additional_score[]"  id="koreanHistoryScore" class="w-full border-gray-300 rounded-md shadow-sm">
+        <option value="0">없음</option>
+        <option value="1">3, 4급 - 1점</option>
+        <option value="2">1, 2급 - 2점</option>
+      </select>
+    </div>
+    
+  </div>
         
 
         <!-- 제출 및 초기화 버튼 -->
-        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg">점수 계산하기</button>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg">계산하기</button>
         <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white rounded-lg mt-4" onclick="resetForm();">초기화</button>
 
         <!-- 결과 표시 -->
@@ -505,15 +550,7 @@
       .catch(error => console.error('Error:', error));
     }
 
-    /**
-   /**
- * 결과 표시 함수
- * @param {Object} data - 서버로부터 받은 데이터
- */
-/**
- * 결과 표시 함수
- * @param {Object} data - 서버로부터 받은 데이터
- */
+
  function displayResult(data) {
   const resultContainer = document.getElementById('result');
 
