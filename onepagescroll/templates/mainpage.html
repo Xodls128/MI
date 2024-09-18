@@ -5,22 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>참고해라 - 공군 지원 정보 서비스</title>
-
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- FullCalendar CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css"
       rel="stylesheet"
     />
-
     <!-- fullPage.js CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.13/fullpage.min.css"
     />
-
     <style>
       @font-face {
         font-family: "Paperlogy-8ExtraBold";
@@ -29,7 +25,6 @@
         font-weight: 800;
         font-style: normal;
       }
-
       /* 기본 스타일 */
       html,
       body {
@@ -39,14 +34,12 @@
         height: 100%;
         width: 100%;
       }
-
       /* 섹션 스타일 */
       .section {
         height: 100vh;
         width: 100%;
         position: relative;
       }
-
       /* 섹션 1 배경 이미지 */
       #section1 {
         background-image: url('{% static "images/airforcebg.svg" %}');
@@ -57,19 +50,16 @@
         align-items: center;
         justify-content: center;
       }
-
       /* 섹션 2 배경 색상 */
       #section2 {
         background-color: #f8f9fa;
       }
-
       /* FullCalendar 스타일 */
       .fc-toolbar-title {
         font-size: 1.75rem;
         font-weight: 600;
         color: #2c3e50;
       }
-
       .fc-button {
         background-color: #6c757d !important;
         border: none !important;
@@ -78,22 +68,26 @@
         font-weight: 600 !important;
         border-radius: 5px !important;
       }
-
       .fc-button:hover {
         background-color: #5a6268 !important;
       }
-
+      .fc-event {
+        background-color: skyblue !important;
+        border: none !important;
+        color: white !important;
+        font-weight: 600 !important;
+        padding: 2px 5px !important;
+        border-radius: 4px !important;
+      }
       .fc-today {
         background-color: rgba(108, 117, 125, 0.2) !important;
       }
-
       #calendar {
         width: 90%;
         height: 700px;
         max-width: 1200px;
         margin: 0 auto;
       }
-
       /* 폼 스타일 */
       #score-form {
         max-width: 1200px;
@@ -104,25 +98,21 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
-
       #score-form label {
         font-weight: 600;
         font-size: 1.1rem;
       }
-
       #score-form button {
         width: 100%;
         padding: 12px;
         margin-top: 10px;
         font-size: 1.2rem;
       }
-
       .additional-score-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 10px;
       }
-
       /* 반응형 디자인 */
       @media (max-width: 1400px) {
         #score-form {
@@ -132,19 +122,16 @@
           grid-template-columns: repeat(4, 1fr);
         }
       }
-
       @media (max-width: 768px) {
         .additional-score-grid {
           grid-template-columns: repeat(2, 1fr);
         }
       }
-
       @media (max-width: 480px) {
         .additional-score-grid {
           grid-template-columns: 1fr;
         }
       }
-
       /* 모달 스타일 */
       .modal-overlay {
         position: fixed;
@@ -158,7 +145,6 @@
         justify-content: center;
         z-index: 1000;
       }
-
       .modal-content {
         background: white;
         padding: 20px;
@@ -168,7 +154,6 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         position: relative;
       }
-
       .modal-content button.close-modal {
         position: absolute;
         top: 10px;
@@ -179,7 +164,6 @@
         cursor: pointer;
         color: #555;
       }
-
       /* 네비게이션 툴팁 스타일 */
       .fp-tooltip {
         background-color: #333;
@@ -201,11 +185,16 @@
       .section5-button:hover {
         background-color: rgb(36, 106, 227);
       }
-      
+
+    .fp-watermark {
+    display: none !important;
+}
     </style>
   </head>
   <body>
-    <div id="fullpage">
+<h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
+  
+    <d id="fullpage">
       <!-- 섹션 1 -->
       <div class="section" data-anchor="section1" id="section1">
         <!-- 콘텐츠 박스 -->
@@ -233,7 +222,7 @@
           </div>
         </div>
       </div>
-
+      </h1>
       <!-- 섹션 2 -->
       <div class="section" data-anchor="section2" id="section2">
         <div class="container mx-auto py-8">
@@ -243,14 +232,12 @@
           <div id="calendar" class="bg-white p-4 rounded-lg shadow-lg"></div>
         </div>
       </div>
-
       <!-- 섹션 3 (지원 자격 요약) -->
       <div class="section" data-anchor="section3" id="section3">
         <div class="container mx-auto py-8">
           <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
             지원 자격 요약
           </h1>
-
           <!-- 연령, 신체 요건 카드 -->
           <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
             <h2 class="text-2xl font-bold mb-4">연령 및 신체 요건</h2>
@@ -266,7 +253,6 @@
               신체검사를 받지 않은 사람은 접수 후 현역병 지원 신체검사 별도 실시
             </p>
           </div>
-
           <!-- 색약/색맹 지원 가능 분야 카드 -->
           <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
             <h2 class="text-2xl font-bold mb-4">색약/색맹 지원 가능 분야</h2>
@@ -282,7 +268,6 @@
               차량정비 등
             </p>
           </div>
-
           <!-- 선발 제외 대상 카드 -->
           <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
             <h2 class="text-2xl font-bold mb-4">선발 제외 대상</h2>
@@ -291,7 +276,6 @@
               등은 선발에서 제외됩니다.
             </p>
           </div>
-
           <!-- 유의사항 카드 -->
           <div class="bg-white p-6 rounded-lg shadow-lg">
             <h2 class="text-2xl font-bold mb-4">유의사항</h2>
@@ -303,7 +287,6 @@
           </div>
         </div>
       </div>
-
       <!-- 섹션 4 -->
       <div class="section" data-anchor="section4" id="section4">
         <div class="container mx-auto py-8">
@@ -313,10 +296,8 @@
           <p class="text-center text-gray-600 mb-11">
             아래에서 골라 합격을 예측해보세요!
           </p>
-
           <form method="POST" class="space-y-4" id="score-form">
             {% csrf_token %}
-
             <!-- 자격/면허 점수 -->
             <div>
               <label
@@ -334,7 +315,6 @@
                 <option value="70">국가기술자격증 - 기사 이상 (70점)</option>
               </select>
             </div>
-
             <!-- 출결 점수 -->
             <div>
               <label
@@ -350,7 +330,6 @@
                 <option value="20">결석 0일 (20점)</option>
               </select>
             </div>
-
             <!-- 면접 점수 -->
             <div>
               <label
@@ -364,7 +343,6 @@
                 <option value="35">면접 평가 우수 (35점)</option>
               </select>
             </div>
-
             <!-- 가산점 -->
             <div>
               <label class="block text-lg font-semibold text-gray-700 mb-2"
@@ -478,7 +456,6 @@
                   >
                 </div>
               </div>
-
               <!-- 드롭다운 옵션들 -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                 <!-- 사회봉사활동 드롭다운 -->
@@ -563,7 +540,6 @@
                 </div>
               </div>
             </div>
-
             <!-- 제출 및 초기화 버튼 -->
             <button
               type="submit"
@@ -578,7 +554,6 @@
             >
               초기화
             </button>
-
             <!-- 결과 표시 -->
             <div
               id="result"
@@ -587,7 +562,6 @@
           </form>
         </div>
       </div>
-
       <!-- 섹션 5 제출 서류 관련 -->
       <div class="section" data-anchor="section5" id="section5">
         <div class="container mx-auto py-8">
@@ -601,8 +575,17 @@
                 <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">최종학력 증명서</a>                
                 <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">고등학교 생기부</a>                
 
-              </div>
+    
+          
+            
+    
 
+          
+          Expand Down
+    
+    
+  
+              </div>
             <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
               <h2 class="text-2xl font-bold mb-4">가산점 제출 서류</h2>
                 <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
@@ -614,7 +597,6 @@
                     <a href="https://efamily.scourt.go.kr/pt/PtFrrpApplrInfoInqW.do?menuFg=02" class="section5-button" target="_blank">가족 관계 증명서(다자녀)</a>                
                 </div>
               
-
                 <div class="bg-white p-6 rounded-lg shadow-lg mb-6" >
                   <h2 class="text-2xl font-bold mb-4">시험 / 자격증 / 봉사활동
                   </h2>
@@ -627,30 +609,25 @@
               
               
             </div>
-
-
           </p>
         </div>
       </div>
     </div>
-
     <!-- JavaScript 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.13/fullpage.min.js"></script>
-
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         initializeCalendar();
         setupFormHandler();
         initializeFullPage();
       });
-
       /**
        * fullPage.js 초기화 함수
        */
       function initializeFullPage() {
         new fullpage("#fullpage", {
-          autoScrolling: true,
+          autoScrolling: false,
           fitToSection: true,
           navigation: true,
           anchors: ["section1", "section2", "section3", "section4", "section5"],
@@ -666,7 +643,6 @@
           scrollBar: false,
         });
       }
-
       /**
        * FullCalendar 초기화 함수
        */
@@ -675,7 +651,7 @@
         const calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: "dayGridMonth",
           locale: "ko",
-          events: "/calendar/events/", // 이벤트 데이터 URL
+          events: "/calendar/events/", // 이벤트 데이터 URL을 수정하세요
           headerToolbar: {
             left: "prev,next today",
             center: "title",
@@ -691,7 +667,6 @@
         });
         calendar.render();
       }
-
       /**
        * 이벤트 클릭 시 모달 표시 핸들러
        * @param {Object} info - 이벤트 정보
@@ -699,56 +674,45 @@
       function handleEventClick(info) {
         const { title, start, end, extendedProps } = info.event;
         const modalHtml = `
-  <div class="modal-overlay">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal();">×</button>
-      <h5 class="text-xl font-bold">${title}</h5>
-      <div class="mt-4">
-        <p><strong>시작일:</strong> ${formatDate(start)}</p>
-        <p><strong>종료일:</strong> ${end ? formatDate(end) : "N/A"}</p>
-        <p><strong>설명:</strong> ${
-          extendedProps.description || "설명 없음"
-        }</p>
-        <p><strong>합격발표일:</strong> ${
-          extendedProps.announcement_date
-            ? formatDate(new Date(extendedProps.announcement_date))
-            : "N/A"
-        }</p> <!-- 합격발표일 추가 -->
-      </div>
-      <div class="mt-4 text-right">
-        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="closeModal();">닫기</button>
-      </div>
-    </div>
-  </div>`;
-
-        // 모달 내용 삽입
-        document.body.insertAdjacentHTML("beforeend", modalHtml);
+        <div class="modal-overlay">
+          <div class="modal-content">
+            <button class="close-modal" onclick="closeModal();">×</button>
+            <h5 class="text-xl font-bold">${title}</h5>
+            <div class="mt-4">
+              <p><strong>시작일:</strong> ${formatDate(start)}</p>
+              <p><strong>종료일:</strong> ${end ? formatDate(end) : "N/A"}</p>
+              <p><strong>추가 정보:</strong> ${
+                extendedProps.content || "추가 정보 없음"
+              }</p>
+            </div>
+            <div class="mt-4 text-right">
+              <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="closeModal();">닫기</button>
+            </div>
+          </div>
+        </div>
+      `;
+        const modalContainer = document.createElement("div");
+        modalContainer.id = "eventModal";
+        modalContainer.innerHTML = modalHtml;
+        document.body.appendChild(modalContainer);
       }
-
       /**
        * 날짜 형식 변환 함수
        * @param {Date} date - 날짜 객체
-       * @returns {string} - 형식화된 날짜 문자열
+       * @returns {string} - 포맷된 날짜 문자열
        */
       function formatDate(date) {
-        const year = date.getFullYear();
-        const month = ("0" + (date.getMonth() + 1)).slice(-2);
-        const day = ("0" + date.getDate()).slice(-2);
-        const hours = ("0" + date.getHours()).slice(-2);
-        const minutes = ("0" + date.getMinutes()).slice(-2);
-        return `${year}-${month}-${day} ${hours}:${minutes}`;
+        return date.toLocaleDateString();
       }
-
       /**
        * 모달 닫기 함수
        */
       function closeModal() {
-        const modalOverlay = document.querySelector(".modal-overlay");
-        if (modalOverlay) {
-          modalOverlay.remove();
+        const modal = document.getElementById("eventModal");
+        if (modal) {
+          modal.remove();
         }
       }
-
       /**
        * 폼 초기화 함수
        */
@@ -757,7 +721,6 @@
         form.reset();
         document.getElementById("result").innerHTML = "";
       }
-
       /**
        * 점수 계산 폼 제출 핸들러 설정 함수
        */
@@ -765,14 +728,12 @@
         const form = document.getElementById("score-form");
         form.addEventListener("submit", handleFormSubmit);
       }
-
       /**
        * 점수 계산 폼 제출 핸들러
        * @param {Event} event - 제출 이벤트
        */
       function handleFormSubmit(event) {
         event.preventDefault();
-
         const formData = new FormData(event.target);
         const additionalScores = formData
           .getAll("additional_score[]")
@@ -789,9 +750,7 @@
           attendanceScore +
           interviewScore +
           additionalScoreTotal;
-
         const csrfToken = formData.get("csrfmiddlewaretoken");
-
         fetch("/calculate-score/", {
           method: "POST",
           headers: {
@@ -809,14 +768,12 @@
           .then((data) => displayResult(data))
           .catch((error) => console.error("Error:", error));
       }
-
       /**
        * 결과 표시 함수
        * @param {Object} data - 서버로부터 받은 데이터
        */
       function displayResult(data) {
         const resultContainer = document.getElementById("result");
-
         const totalScore = data.total_score || 0;
         const result = data.result || "결과 없음";
         const predictedCutoff =
@@ -825,7 +782,6 @@
             : "예측 불가";
         const latestCutoff =
           data.latest_cutoff !== undefined ? data.latest_cutoff : "불명";
-
         if (resultContainer) {
           resultContainer.innerHTML = `
           <p><strong>총점:</strong> ${totalScore}점</p>
@@ -836,7 +792,6 @@
         } else {
           console.error("Result container not found.");
         }
-
         // 결과 표시 후 fullPage.js 재빌드
         fullpage_api.reBuild();
       }
