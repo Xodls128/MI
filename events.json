@@ -63,3 +63,84 @@
     "backgroundColor": "#fdd835"
   }
 ]
+
+
+events_data = [
+  {
+      "title": "공군 23-10회차 (854기)",
+      "start_time": "2023-10-05T14:00:00",
+      "end_time": "2023-10-12T14:00:00",
+      "announcement_date": "2023-10-20",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 23-11회차 (855기)",
+      "start_time": "2023-10-31T14:00:00",
+      "end_time": "2023-11-07T14:00:00",
+      "announcement_date": "2023-11-17",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 23-12회차 (856기)",
+      "start_time": "2023-11-29T14:00:00",
+      "end_time": "2023-12-06T14:00:00",
+      "announcement_date": "2023-12-15",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-1회차 (857기)",
+      "start_time": "2023-12-28T14:00:00",
+      "end_time": "2024-01-04T14:00:00",
+      "announcement_date": "2024-01-18",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-2회차 (858기)",
+      "start_time": "2024-01-30T14:00:00",
+      "end_time": "2024-02-06T14:00:00",
+      "announcement_date": "2024-02-20",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-3회차 (859기)",
+      "start_time": "2024-03-28T14:00:00",
+      "end_time": "2024-04-04T14:00:00",
+      "announcement_date": "2024-04-16",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-4회차 (860기)",
+      "start_time": "2024-04-30T14:00:00",
+      "end_time": "2024-05-08T14:00:00",
+      "announcement_date": "2024-05-21",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-5회차 (861기)",
+      "start_time": "2024-05-28T14:00:00",
+      "end_time": "2024-06-04T14:00:00",
+      "announcement_date": "2024-06-14",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-6회차 (862기)",
+      "start_time": "2024-06-27T14:00:00",
+      "end_time": "2024-07-04T14:00:00",
+      "announcement_date": "2024-07-16",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-7회차 (863기)",
+      "start_time": "2024-07-30T14:00:00",
+      "end_time": "2024-08-06T14:00:00",
+      "announcement_date": "2024-08-20",
+      "backgroundColor": "#3788d8"
+  },
+  {
+      "title": "공군 24-8회차 (864기)",
+      "start_time": "2024-08-28T14:00:00",
+      "end_time": "2024-09-04T14:00:00",
+      "announcement_date": "2024-09-13",
+      "backgroundColor": "#3788d8"
+  }
+]

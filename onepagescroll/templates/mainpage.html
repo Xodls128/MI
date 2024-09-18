@@ -188,6 +188,20 @@
         border-radius: 4px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       }
+
+      .section5-button{
+        margin: 10px !important;
+        padding: 10px 20px !important;
+        background-color:rgba(80, 136, 233, 0.581);
+        color: #121212;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+
+      .section5-button:hover {
+        background-color: rgb(36, 106, 227);
+      }
+      
     </style>
   </head>
   <body>
@@ -227,16 +241,6 @@
             공군 지원일 & 자격증 시험일 캘린더
           </h1>
           <div id="calendar" class="bg-white p-4 rounded-lg shadow-lg"></div>
-          <!-- 일정 추가 버튼 -->
-          <div class="text-center mt-6">
-            <button
-              id="add-event-btn"
-              class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
-              onclick="openAddEventModal();"
-            >
-              일정 추가하기
-            </button>
-          </div>
         </div>
       </div>
 
@@ -584,14 +588,47 @@
         </div>
       </div>
 
-      <!-- 섹션 5 (빈 화면) -->
+      <!-- 섹션 5 제출 서류 관련 -->
       <div class="section" data-anchor="section5" id="section5">
         <div class="container mx-auto py-8">
           <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
-            섹션 5 빈 화면
+            제출 서류 관련 안내
           </h1>
           <p class="text-center text-gray-600">
-            이곳은 빈 화면입니다. 추후에 콘텐츠를 추가할 수 있습니다.
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+              <h2 class="text-2xl font-bold mb-4" id="section5-box">기본 제출 서류
+              </h2>
+                <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">최종학력 증명서</a>                
+                <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">고등학교 생기부</a>                
+
+              </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+              <h2 class="text-2xl font-bold mb-4">가산점 제출 서류</h2>
+                <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+                  <h2 class="text-2xl font-bold mb-4">가족 관련 서류
+                  </h2>
+                    <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A05005&CappBizCD=11800000025&tp_seq=01" class="section5-button" target="_blank">취업 지원 대상자 증명서</a>                
+                    <a href="" class="section5-button" target="_blank">국가 유공자 자녀</a>                
+                    <a href="" class="section5-button" target="_blank">독립 유공자 자녀 / 손자녀</a>                
+                    <a href="https://efamily.scourt.go.kr/pt/PtFrrpApplrInfoInqW.do?menuFg=02" class="section5-button" target="_blank">가족 관계 증명서(다자녀)</a>                
+                </div>
+              
+
+                <div class="bg-white p-6 rounded-lg shadow-lg mb-6" >
+                  <h2 class="text-2xl font-bold mb-4">시험 / 자격증 / 봉사활동
+                  </h2>
+                  <a href="https://www.gov.kr/portal/service/serviceInfo/176000000004" class="section5-button" target="_blank">공인 영어 성적 증명서 발급</a>                
+                  <a href="https://www.gov.kr/portal/service/serviceInfo/134200000050" class="section5-button" target="_blank">한국사/어 능력 검정 시험 인증서 발급</a>                
+                  <a href="https://mwpt.mma.go.kr/caisBMHS/index_mwps.jsp?menuNo=22315" class="section5-button" target="_blank">병역 진로 설계 군 추천 특기 지원자</a>                
+                  <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">항공 정비사 / 항공 정비 기초 인력 인증서</a>                
+                  <a href="https://vms.or.kr/auth/certificate.do" class="section5-button" target="_blank">사회 복지 봉사 활동 인증서(VMS)</a>                
+                </div>
+              
+              
+            </div>
+
+
           </p>
         </div>
       </div>
@@ -613,7 +650,7 @@
        */
       function initializeFullPage() {
         new fullpage("#fullpage", {
-          autoScrolling: false,
+          autoScrolling: true,
           fitToSection: true,
           navigation: true,
           anchors: ["section1", "section2", "section3", "section4", "section5"],
@@ -622,7 +659,7 @@
             "일정",
             "지원 자격",
             "합격 예측",
-            "빈 화면",
+            "제출 서류",
           ],
           showActiveTooltip: true,
           scrollingSpeed: 700,
