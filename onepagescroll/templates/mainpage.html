@@ -83,15 +83,6 @@
         background-color: #5a6268 !important;
       }
 
-      .fc-event {
-        background-color: skyblue !important;
-        border: none !important;
-        color: white !important;
-        font-weight: 600 !important;
-        padding: 2px 5px !important;
-        border-radius: 4px !important;
-      }
-
       .fc-today {
         background-color: rgba(108, 117, 125, 0.2) !important;
       }
@@ -236,6 +227,16 @@
             공군 지원일 & 자격증 시험일 캘린더
           </h1>
           <div id="calendar" class="bg-white p-4 rounded-lg shadow-lg"></div>
+          <!-- 일정 추가 버튼 -->
+          <div class="text-center mt-6">
+            <button
+              id="add-event-btn"
+              class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg"
+              onclick="openAddEventModal();"
+            >
+              일정 추가하기
+            </button>
+          </div>
         </div>
       </div>
 
@@ -637,7 +638,7 @@
         const calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: "dayGridMonth",
           locale: "ko",
-          events: "/calendar/events/", // 이벤트 데이터 URL을 수정하세요
+          events: "/calendar/events/", // 이벤트 데이터 URL
           headerToolbar: {
             left: "prev,next today",
             center: "title",
@@ -661,45 +662,53 @@
       function handleEventClick(info) {
         const { title, start, end, extendedProps } = info.event;
         const modalHtml = `
-        <div class="modal-overlay">
-          <div class="modal-content">
-            <button class="close-modal" onclick="closeModal();">×</button>
-            <h5 class="text-xl font-bold">${title}</h5>
-            <div class="mt-4">
-              <p><strong>시작일:</strong> ${formatDate(start)}</p>
-              <p><strong>종료일:</strong> ${end ? formatDate(end) : "N/A"}</p>
-              <p><strong>추가 정보:</strong> ${
-                extendedProps.content || "추가 정보 없음"
-              }</p>
-            </div>
-            <div class="mt-4 text-right">
-              <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="closeModal();">닫기</button>
-            </div>
-          </div>
-        </div>
-      `;
-        const modalContainer = document.createElement("div");
-        modalContainer.id = "eventModal";
-        modalContainer.innerHTML = modalHtml;
-        document.body.appendChild(modalContainer);
+  <div class="modal-overlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal();">×</button>
+      <h5 class="text-xl font-bold">${title}</h5>
+      <div class="mt-4">
+        <p><strong>시작일:</strong> ${formatDate(start)}</p>
+        <p><strong>종료일:</strong> ${end ? formatDate(end) : "N/A"}</p>
+        <p><strong>설명:</strong> ${
+          extendedProps.description || "설명 없음"
+        }</p>
+        <p><strong>합격발표일:</strong> ${
+          extendedProps.announcement_date
+            ? formatDate(new Date(extendedProps.announcement_date))
+            : "N/A"
+        }</p> <!-- 합격발표일 추가 -->
+      </div>
+      <div class="mt-4 text-right">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onclick="closeModal();">닫기</button>
+      </div>
+    </div>
+  </div>`;
+
+        // 모달 내용 삽입
+        document.body.insertAdjacentHTML("beforeend", modalHtml);
       }
 
       /**
        * 날짜 형식 변환 함수
        * @param {Date} date - 날짜 객체
-       * @returns {string} - 포맷된 날짜 문자열
+       * @returns {string} - 형식화된 날짜 문자열
        */
       function formatDate(date) {
-        return date.toLocaleDateString();
+        const year = date.getFullYear();
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const day = ("0" + date.getDate()).slice(-2);
+        const hours = ("0" + date.getHours()).slice(-2);
+        const minutes = ("0" + date.getMinutes()).slice(-2);
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
       }
 
       /**
        * 모달 닫기 함수
        */
       function closeModal() {
-        const modal = document.getElementById("eventModal");
-        if (modal) {
-          modal.remove();
+        const modalOverlay = document.querySelector(".modal-overlay");
+        if (modalOverlay) {
+          modalOverlay.remove();
         }
       }
 

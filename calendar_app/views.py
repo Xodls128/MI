@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from .models import Event
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
 
 def event_list(request):
     events = Event.objects.all()
@@ -12,9 +13,8 @@ def event_list(request):
             'title': event.title,
             'start': event.start_time.strftime('%Y-%m-%dT%H:%M:%S'),
             'end': event.end_time.strftime('%Y-%m-%dT%H:%M:%S') if event.end_time else None,
-            'description': event.description,
-            'color': event.color,  # 색상 추가
-            'content': event.content,  # 추가적인 설명 추가
+            'backgroundColor': event.backgroundColor,  # 색상 추가
+            'announcement_date': event.announcement_date.strftime('%Y-%m-%d') if event.announcement_date else None
         })
     return JsonResponse(events_data, safe=False)
 
@@ -24,14 +24,19 @@ def add_event(request):
         title = request.POST.get('title')
         start_time = request.POST.get('start_time')
         end_time = request.POST.get('end_time')
-        description = request.POST.get('description', '')
-        
+        announcement_date = request.POST.get('announcement_date', None)  # 합격발표일 추가
+
+        # 문자열로 받은 날짜를 datetime 객체로 변환
+        start_time = datetime.strptime(start_time, '%Y-%m-%dT%H:%M:%S')
+        end_time = datetime.strptime(end_time, '%Y-%m-%dT%H:%M:%S') if end_time else None
+        announcement_date = datetime.strptime(announcement_date, '%Y-%m-%d') if announcement_date else None
+
         # 새 이벤트 저장
         event = Event.objects.create(
             title=title,
             start_time=start_time,
             end_time=end_time,
-            description=description,
+            announcement_date=announcement_date,  # 합격발표일 저장
         )
         return JsonResponse({'message': 'Event created successfully.'}, status=201)
     return JsonResponse({'error': 'Invalid request'}, status=400)
