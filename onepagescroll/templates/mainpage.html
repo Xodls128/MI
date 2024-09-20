@@ -89,6 +89,13 @@
         color: #2563eb;
         margin-bottom: -10px;
       }
+      .section5-maintext{
+        font-size: 2.25rem;
+        font-weight: bold;
+        text-align: center;
+        color: #2563eb;
+        margin-bottom: -80px;
+      }
       /* FullCalendar 스타일 */
       .fc-toolbar-title {
         font-size: 1.75rem;
@@ -259,28 +266,38 @@
         transition: background-color 0.3s ease ;
         border-radius: 3px;
       }
-
+      .section5-box{
+        transform: scale(0.74);
+        max-width: 1000px;
+        max-height: 100vh;
+        margin-left: auto;
+        margin-right: auto;
+      }
       .link-box{
         background-color: white; 
         padding: 24px; 
         border-radius: 0.5rem; 
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-        margin-bottom: 1.5rem; 
+        margin-bottom: 2.5rem; 
         margin-top: -30px;
+        width: 110%;
+        margin-left: -5%;
       }
       .link-box-2{
         background-color: white; 
         padding: 24px; 
         border-radius: 0.5rem; 
-        margin-top: -40px;
-        margin-bottom: 1.5rem; 
+        margin-top: -70px;
+        margin-bottom: 1rem; 
 
       }
+
       .link-box-content{
         margin-top: -20px;
         display: flex;
         justify-content: center; 
         align-self: center;
+        
       }
       .link-box a{
         max-width: 150px;
@@ -707,14 +724,14 @@
       </div>
       <!-- 섹션 5 제출 서류 관련 -->
       <div class="section" data-anchor="section5" id="section5">
-        <div class="containerbox">
-          <h1 class="section-maintext">
+
+          <h1 class="section5-maintext">
             제출 서류 관련 안내
           </h1>
-          
+            <div class="section5-box">
             <div class="link-box-2">
               <div class="link-box">
-              <h2 class="text-2xl font-bold mb-4 text-center text-gray-600"><기본 제출 서류>
+              <h2 class="text-2xl font-bold mb-4 text-center text-blue-800"><기본 제출 서류>
               </h2>
                 <div class="link-box-content">
                   <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">
@@ -727,7 +744,7 @@
               </div>
             </div>
             <div class="link-box-2">
-              <h2 class="text-2xl font-bold mb-4 text-center text-gray-600"><가산점 제출 서류></h2>
+              <h2 class="text-2xl font-bold mb-4 text-center text-blue-800"><가산점 제출 서류></h2>
                 <div class="link-box">
                   <h2 class="text-2xl font-bold mb-4 text-center text-gray-600">가족 관련 서류
                   </h2>
@@ -766,7 +783,7 @@
                     <a href="https://vms.or.kr/auth/certificate.do" class="section5-button text-center text-gray-600" target="_blank ">
                       <img src="{% static 'images/volunteer.png' %}" class="link-icon">
                       복지 봉사 활동</a>
-                      <div class="link-box-2"></div>                
+                        
                   </div>
                 </div>
             </div>
