@@ -33,7 +33,9 @@
         font-family: "Paperlogy-8ExtraBold", sans-serif;
         height: 100%;
         width: 100%;
+        overflow: hidden;
       }
+
       /* 섹션 스타일 */
       .section {
         height: 100vh;
@@ -53,6 +55,7 @@
       /* 섹션 2 배경 색상 */
       #section2 {
         background-color: #f8f9fa;
+        overflow: hidden !important;
       }
       /* FullCalendar 스타일 */
       .fc-toolbar-title {
@@ -103,7 +106,7 @@
         font-size: 1.1rem;
       }
       #score-form button {
-        width: 100%;
+        width: 50%;
         padding: 12px;
         margin-top: 10px;
         font-size: 1.2rem;
@@ -186,16 +189,27 @@
         background-color: rgb(36, 106, 227);
       }
 
-    .fp-watermark {
-    display: none !important;
-}
+      .fp-watermark {
+      display: none !important;
+      }
+
+      .fp-overflow {
+        overflow: hidden; /* 스크롤을 숨김 */
+      }
+
+      .containerbox{
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
     </style>
   </head>
   <body>
-<h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
+
   
-    <d id="fullpage">
+    <div id="fullpage">
       <!-- 섹션 1 -->
+      <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
       <div class="section" data-anchor="section1" id="section1">
         <!-- 콘텐츠 박스 -->
         <div
@@ -224,17 +238,19 @@
       </div>
       </h1>
       <!-- 섹션 2 -->
-      <div class="section" data-anchor="section2" id="section2">
-        <div class="container mx-auto py-8">
-          <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">
-            공군 지원일 & 자격증 시험일 캘린더
-          </h1>
-          <div id="calendar" class="bg-white p-4 rounded-lg shadow-lg"></div>
-        </div>
-      </div>
+       
+          <div class="section" data-anchor="section2" id="section2" >
+            <div class="containerbox">
+              <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">
+                공군 지원일 & 자격증 시험일 캘린더
+              </h1>
+              <div id="calendar" class="bg-white p-4 rounded-lg shadow-lg"></div>
+            </div>
+          </div>
+
       <!-- 섹션 3 (지원 자격 요약) -->
-      <div class="section" data-anchor="section3" id="section3">
-        <div class="container mx-auto py-8">
+      <div class="section" data-anchor="section3" id="section3" style="max-height: 90vh; overflow-y: auto;">
+        <div >
           <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
             지원 자격 요약
           </h1>
@@ -289,14 +305,15 @@
       </div>
       <!-- 섹션 4 -->
       <div class="section" data-anchor="section4" id="section4">
-        <div class="container mx-auto py-8">
+        <div>
           <h1 class="text-4xl font-bold text-center text-blue-600 mb-6">
             공군 일반 기술병 점수 계산기
           </h1>
-          <p class="text-center text-gray-600 mb-11">
+          <p class="text-center text-gray-600 mb-11 ">
             아래에서 골라 합격을 예측해보세요!
           </p>
-          <form method="POST" class="space-y-4" id="score-form">
+        
+          <form method="POST" class="transform scale-85 mx-auto" id="score-form">
             {% csrf_token %}
             <!-- 자격/면허 점수 -->
             <div>
@@ -541,30 +558,29 @@
               </div>
             </div>
             <!-- 제출 및 초기화 버튼 -->
+           <div class="flex space-x-4" > 
             <button
               type="submit"
-              class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
-            >
+              class="bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-2">
               계산하기
             </button>
             <button
               type="button"
-              class="bg-gray-500 hover:bg-gray-600 text-white rounded-lg mt-4"
-              onclick="resetForm();"
-            >
+              class="bg-gray-500 hover:bg-gray-600 text-white rounded-lg px-4 py-2"
+              onclick="resetForm();">
               초기화
             </button>
+          </div>
             <!-- 결과 표시 -->
-            <div
-              id="result"
-              class="mt-8 bg-green-100 p-4 rounded-lg text-center text-lg"
-            ></div>
+            <div id="result" class="mt-8 bg-green-100 p-4 rounded-lg text-center text-lg">
+
+            </div>
           </form>
         </div>
       </div>
       <!-- 섹션 5 제출 서류 관련 -->
       <div class="section" data-anchor="section5" id="section5">
-        <div class="container mx-auto py-8">
+        <div>
           <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
             제출 서류 관련 안내
           </h1>
@@ -573,18 +589,7 @@
               <h2 class="text-2xl font-bold mb-4" id="section5-box">기본 제출 서류
               </h2>
                 <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">최종학력 증명서</a>                
-                <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">고등학교 생기부</a>                
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
+                <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">고등학교 생기부</a> 
               </div>
             <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
               <h2 class="text-2xl font-bold mb-4">가산점 제출 서류</h2>
@@ -612,7 +617,8 @@
           </p>
         </div>
       </div>
-    </div>
+    
+  </div>
     <!-- JavaScript 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.13/fullpage.min.js"></script>
@@ -630,6 +636,7 @@
           autoScrolling: false,
           fitToSection: true,
           navigation: true,
+          scrollBar: false,
           anchors: ["section1", "section2", "section3", "section4", "section5"],
           navigationTooltips: [
             "첫 화면",
@@ -640,7 +647,6 @@
           ],
           showActiveTooltip: true,
           scrollingSpeed: 700,
-          scrollBar: false,
         });
       }
       /**
