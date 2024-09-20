@@ -186,6 +186,7 @@
       }
       /* 반응형 디자인 */
       @media (max-width: 1400px) {
+        
         #score-form {
           width: 95%;
         }
@@ -245,26 +246,36 @@
       }
 
       .section5-button{
-        
+        font-size:  25px;
         margin: 10px !important;
-        padding: 10px 20px !important;
-        background-color:rgba(255, 255, 255, 0);
+        padding: 0px 0px!important;
+        background-color:rgb(255, 255, 255);
         color: #121212;
         text-decoration: none;
         border-radius: 3px;
         text-align: center;
         position: relative;
+        border: 2px solid rgba(136, 180, 255, 0.425);
+        border-radius: 5px;
       }
+      
       .section5-button::after{
         content: '';
         position: absolute;
-        left: 5%;
-        bottom: 9px;
-        width: 90%;
-        height: 20px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 30px;
         background-color: rgba(136, 180, 255, 0.425) ;
-        transition: background-color 0.3s ease ;
-        border-radius: 3px;
+        transition: background-color 0.3s ease, border 0.3s ease ;
+        border-radius: 0;
+      }
+      .section5-button:hover {
+        border-color: rgba(136, 180, 255, 0.8); /* 보더 색 변경 */
+      }
+
+      .section5-button:hover::after {
+        background-color: rgba(136, 180, 255, 0.8); /* 배경색 변경 */
       }
       .section5-box{
         transform: scale(0.74);
@@ -309,8 +320,8 @@
         white-space: nowrap;
       }
       .link-icon{
-        width: 100%;
-        height: 80%;
+        width: 150px;
+        height: 150px;
       }
 
       .section5-button:hover::after {
@@ -730,9 +741,10 @@
           </h1>
             <div class="section5-box">
             <div class="link-box-2">
-              <div class="link-box">
-              <h2 class="text-2xl font-bold mb-4 text-center text-blue-800"><기본 제출 서류>
+              <h2 class="text-4xl font-bold mb-4 text-center text-blue-800"><기본 제출 서류>
               </h2>
+              <div class="link-box">
+              
                 <div class="link-box-content">
                   <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">
                     <img src="{% static 'images/education.png' %}" class="link-icon">
@@ -744,7 +756,7 @@
               </div>
             </div>
             <div class="link-box-2">
-              <h2 class="text-2xl font-bold mb-4 text-center text-blue-800"><가산점 제출 서류></h2>
+              <h2 class="text-4xl font-bold mb-4 text-center text-blue-800"><가산점 제출 서류></h2>
                 <div class="link-box">
                   <h2 class="text-2xl font-bold mb-4 text-center text-gray-600">가족 관련 서류
                   </h2>
@@ -752,10 +764,10 @@
                       <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A05005&CappBizCD=11800000025&tp_seq=01" class="section5-button" target="_blank">
                         <img src="{% static 'images/jobcheck.png' %}" class="link-icon">
                         취업 지원 대상자</a>                
-                      <a href="" class="section5-button text-center text-gray-600" target="_blank">
+                      <a href="" class="section5-button" target="_blank">
                         <img src="{% static 'images/check.png' %}" class="link-icon">
                         국가 유공자 자녀</a>                
-                      <a href="" class="section5-button text-center text-gray-600" target="_blank">
+                      <a href="" class="section5-button" target="_blank">
                         <img src="{% static 'images/korea.png' %}" class="link-icon">
                         독립 유공자 자녀 </a>                
                       <a href="https://efamily.scourt.go.kr/pt/PtFrrpApplrInfoInqW.do?menuFg=02" class="section5-button" target="_blank">
@@ -768,19 +780,19 @@
                   <h2 class="text-2xl font-bold mb-4 text-center text-gray-600">시험 / 자격증 / 봉사활동
                   </h2>
                   <div class="link-box-content">
-                    <a href="https://www.gov.kr/portal/service/serviceInfo/176000000004" class="section5-button text-center text-gray-600" target="_blank">
+                    <a href="https://www.gov.kr/portal/service/serviceInfo/176000000004" class="section5-button" target="_blank">
                       <img src="{% static 'images/engtest.png' %}" class="link-icon">
                       공인 영어 성적</a>                
-                    <a href="https://www.gov.kr/portal/service/serviceInfo/134200000050" class="section5-button text-center text-gray-600" target="_blank">
+                    <a href="https://www.gov.kr/portal/service/serviceInfo/134200000050" class="section5-button" target="_blank">
                       <img src="{% static 'images/koreatest.png' %}" class="link-icon">
                       한국 능력 검정</a>                
-                    <a href="https://mwpt.mma.go.kr/caisBMHS/index_mwps.jsp?menuNo=22315" class="section5-button text-center text-gray-600" target="_blank">
+                    <a href="https://mwpt.mma.go.kr/caisBMHS/index_mwps.jsp?menuNo=22315" class="section5-button" target="_blank">
                       <img src="{% static 'images/telent.png' %}" class="link-icon">
                       병역 설계 추천</a>                
-                    <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button text-center text-gray-600" target="_blank">
+                    <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">
                       <img src="{% static 'images/airrepair.png' %}" class="link-icon">
                       항공 정비 기초</a>                
-                    <a href="https://vms.or.kr/auth/certificate.do" class="section5-button text-center text-gray-600" target="_blank ">
+                    <a href="https://vms.or.kr/auth/certificate.do" class="section5-button" target="_blank ">
                       <img src="{% static 'images/volunteer.png' %}" class="link-icon">
                       복지 봉사 활동</a>
                         
@@ -789,7 +801,7 @@
             </div>
 
           <div class="footer">
-            <p>© 2024 국민대학교 멋쟁이사자처럼 팀 ETC. All rights reserved.</p>
+            <p>© 2024 국민대학교 멋쟁이사자처럼 팀 군대갈래. All rights reserved.</p>
         </div>
         </div>
       </div>
