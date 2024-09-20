@@ -36,7 +36,7 @@
         font-family: "Paperlogy-8ExtraBold", sans-serif;
         height: 100%;
         width: 100%;
-        overflow: hidden;
+
       }
 
       /* 섹션 스타일 */
@@ -44,6 +44,8 @@
         height: 100vh;
         width: 100%;
         position: relative;
+        margin-bottom: auto;
+        
       }
       /* 섹션 1 배경 이미지 */
       #section1 {
@@ -54,11 +56,27 @@
         display: flex;
         align-items: center;
         justify-content: center;
-      }
+        }
       /* 섹션 2 배경 색상 */
       #section2 {
         background-color: #f8f9fa;
-        overflow: hidden !important;
+      }
+      .section3-card{
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+        margin-bottom: 0.5rem;
+      }
+      .section3-main{
+        margin-top: 10px;
+      }
+      .section-maintext{
+        font-size: 2.25rem;
+        font-weight: bold;
+        text-align: center;
+        color: #2563eb;
+        margin-bottom: -10px;
       }
       /* FullCalendar 스타일 */
       .fc-toolbar-title {
@@ -89,20 +107,23 @@
         background-color: rgba(108, 117, 125, 0.2) !important;
       }
       #calendar {
-        width: 90%;
-        height: 700px;
+        width: 80%;
+        height: 90%;
         max-width: 1200px;
-        margin: 0 auto;
+        margin-top: -20px;
+        margin-right: auto;
+        margin-left: auto;
       }
       /* 폼 스타일 */
       #score-form {
-        max-width: 1200px;
+        max-width: 600px;
         width: 90%;
         margin: 0 auto;
         padding: 20px;
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: -40px;
       }
       #score-form label {
         font-weight: 600;
@@ -180,17 +201,70 @@
       }
 
       .section5-button{
+        
         margin: 10px !important;
         padding: 10px 20px !important;
-        background-color:rgba(80, 136, 233, 0.581);
+        background-color:rgba(255, 255, 255, 0);
         color: #121212;
         text-decoration: none;
-        border-radius: 5px;
+        border-radius: 3px;
+        text-align: center;
+        position: relative;
+      }
+      .section5-button::after{
+        content: '';
+        position: absolute;
+        left: 5%;
+        bottom: 9px;
+        width: 90%;
+        height: 20px;
+        background-color: rgba(136, 180, 255, 0.425) ;
+        transition: background-color 0.3s ease ;
+        border-radius: 3px;
       }
 
-      .section5-button:hover {
-        background-color: rgb(36, 106, 227);
+      .link-box{
+        background-color: white; 
+        padding: 24px; 
+        border-radius: 0.5rem; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        margin-bottom: 1.5rem; 
+        margin-top: -30px;
       }
+      .link-box-2{
+        background-color: white; 
+        padding: 24px; 
+        border-radius: 0.5rem; 
+        margin-top: -40px;
+        margin-bottom: 1.5rem; 
+
+      }
+      .link-box-content{
+        margin-top: -20px;
+        display: flex;
+        justify-content: center; 
+        align-self: center;
+      }
+      .link-box a{
+        max-width: 150px;
+        max-height: 150px;
+        height: 100%;
+        flex: 1;
+        margin: 0 10px;
+        font-size: auto;
+        white-space: nowrap;
+      }
+      .link-icon{
+        width: 100%;
+        height: 80%;
+      }
+
+      .section5-button:hover::after {
+        background-color: rgba(71, 136, 249, 0.662);
+        transition: background-color 0.3s ease;
+      }
+
+
 
       .fp-watermark {
       display: none !important;
@@ -201,10 +275,19 @@
       }
 
       .containerbox{
-        max-width: 100%;
+        max-width: 1000px;
+        max-height: 100vh;
         margin-left: auto;
         margin-right: auto;
       }
+      .footer {
+          margin-top: -30px;
+          margin-bottom: 10px;
+          font-size: 16px;
+          color: #7f8c8d;
+          text-align: center;
+      }
+
     </style>
   </head>
   <body>
@@ -212,9 +295,10 @@
   
     <div id="fullpage">
       <!-- 섹션 1 -->
-      <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
+      
       <div class="section" data-anchor="section1" id="section1">
         <!-- 콘텐츠 박스 -->
+        <h1 class="section-maintext">
         <div
           class="content-wrapper text-center z-10 px-8 py-16 bg-white bg-opacity-80 shadow-xl rounded-lg"
         >
@@ -238,8 +322,9 @@
             </a>
           </div>
         </div>
-      </div>
       </h1>
+      </div>
+      
       <!-- 섹션 2 -->
        
           <div class="section" data-anchor="section2" id="section2" >
@@ -252,71 +337,73 @@
           </div>
 
       <!-- 섹션 3 (지원 자격 요약) -->
-      <div class="section" data-anchor="section3" id="section3" style="max-height: 90vh; overflow-y: auto;">
-        <div >
-          <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
+    <div class="section" data-anchor="section3" id="section3" style="max-height: 90vh; overflow-y: auto;">
+      <div class="containerbox">
+          <h1 class="section-maintext">
             지원 자격 요약
           </h1>
-          <!-- 연령, 신체 요건 카드 -->
-          <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-bold mb-4">연령 및 신체 요건</h2>
-            <p class="text-lg">
-              <strong>연령:</strong> 지원서 접수년도 기준 18세 이상, 28세 이하
-              (1996.1.1 ~ 2006.12.31 출생자)
-            </p>
-            <p class="text-lg">
-              <strong>신체 요건:</strong> 병역판정검사 결과 신체등급 1급 ~ 4급
-              현역병 입영 대상자
-            </p>
-            <p class="text-lg">
-              신체검사를 받지 않은 사람은 접수 후 현역병 지원 신체검사 별도 실시
-            </p>
-          </div>
-          <!-- 색약/색맹 지원 가능 분야 카드 -->
-          <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-bold mb-4">색약/색맹 지원 가능 분야</h2>
-            <p class="text-lg">
-              <strong>일반 기술병:</strong> 일반, 기계, 의무
-            </p>
-            <p class="text-lg">
-              <strong>전문특기병:</strong> 군악병, 의장병, 우주기상분석병,
-              조리병, 어학병, IT개발관리병
-            </p>
-            <p class="text-lg">
-              <strong>색약 가능 분야:</strong> 차량운전, 전자계산, 통신전자전기,
-              차량정비 등
-            </p>
-          </div>
-          <!-- 선발 제외 대상 카드 -->
-          <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-            <h2 class="text-2xl font-bold mb-4">선발 제외 대상</h2>
-            <p class="text-lg">
-              징역 또는 금고형을 선고받은 사람, 수사 중인 사람, 허위 서류 제출자
-              등은 선발에서 제외됩니다.
-            </p>
-          </div>
-          <!-- 유의사항 카드 -->
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-bold mb-4">유의사항</h2>
-            <p class="text-lg">
-              1차 합격 후 다음 회차 지원 불가 (예외: 1차 합격 후 지원서 취소 시
-              다음 회차 지원 가능)
-            </p>
-            <p class="text-lg">대체역 편입원을 제출한 경우 모집병 선발 제외</p>
-          </div>
+        <div class="section3-main">
+            <!-- 연령, 신체 요건 카드 -->
+            <div class="section3-card">
+              <h2 class="text-2xl font-bold mb-4">연령 및 신체 요건</h2>
+              <p class="text-lg">
+                <strong>연령:</strong> 지원서 접수년도 기준 18세 이상, 28세 이하
+                (1996.1.1 ~ 2006.12.31 출생자)
+              </p>
+              <p class="text-lg">
+                <strong>신체 요건:</strong> 병역판정검사 결과 신체등급 1급 ~ 4급
+                현역병 입영 대상자
+              </p>
+              <p class="text-lg">
+                신체검사를 받지 않은 사람은 접수 후 현역병 지원 신체검사 별도 실시
+              </p>
+            </div>
+            <!-- 색약/색맹 지원 가능 분야 카드 -->
+            <div class="section3-card">
+              <h2 class="text-2xl font-bold mb-4">색약/색맹 지원 가능 분야</h2>
+              <p class="text-lg">
+                <strong>일반 기술병:</strong> 일반, 기계, 의무
+              </p>
+              <p class="text-lg">
+                <strong>전문특기병:</strong> 군악병, 의장병, 우주기상분석병,
+                조리병, 어학병, IT개발관리병
+              </p>
+              <p class="text-lg">
+                <strong>색약 가능 분야:</strong> 차량운전, 전자계산, 통신전자전기,
+                차량정비 등
+              </p>
+            </div>
+            <!-- 선발 제외 대상 카드 -->
+            <div class="section3-card">
+              <h2 class="text-2xl font-bold mb-4">선발 제외 대상</h2>
+              <p class="text-lg">
+                징역 또는 금고형을 선고받은 사람, 수사 중인 사람, 허위 서류 제출자
+                등은 선발에서 제외됩니다.
+              </p>
+            </div>
+            <!-- 유의사항 카드 -->
+            <div class="section3-card">
+              <h2 class="text-2xl font-bold mb-4">유의사항</h2>
+              <p class="text-lg">
+                1차 합격 후 다음 회차 지원 불가 (예외: 1차 합격 후 지원서 취소 시
+                다음 회차 지원 가능)
+              </p>
+              <p class="text-lg">대체역 편입원을 제출한 경우 모집병 선발 제외</p>
+            </div>
         </div>
       </div>
+    </div>
       <!-- 섹션 4 -->
       <div class="section" data-anchor="section4" id="section4">
-        <div>
-          <h1 class="text-4xl font-bold text-center text-blue-600 mb-6">
+        <div class="containerbox">
+          <h1 class="section-maintext">
             공군 일반 기술병 점수 계산기
           </h1>
           <p class="text-center text-gray-600 mb-11 ">
             아래에서 골라 합격을 예측해보세요!
           </p>
         
-          <form method="POST" class="transform scale-85 mx-auto" id="score-form">
+          <form method="POST" class="transform scale-70 mx-auto" id="score-form">
             {% csrf_token %}
             <!-- 자격/면허 점수 -->
             <div>
@@ -583,41 +670,73 @@
       </div>
       <!-- 섹션 5 제출 서류 관련 -->
       <div class="section" data-anchor="section5" id="section5">
-        <div>
-          <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">
+        <div class="containerbox">
+          <h1 class="section-maintext">
             제출 서류 관련 안내
           </h1>
-          <p class="text-center text-gray-600">
-            <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-              <h2 class="text-2xl font-bold mb-4" id="section5-box">기본 제출 서류
+          
+            <div class="link-box-2">
+              <div class="link-box">
+              <h2 class="text-2xl font-bold mb-4 text-center text-gray-600"><기본 제출 서류>
               </h2>
-                <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">최종학력 증명서</a>                
-                <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">고등학교 생기부</a> 
+                <div class="link-box-content">
+                  <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">
+                    <img src="{% static 'images/education.png' %}" class="link-icon">
+                    최종학력 증명서</a>                
+                  <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">
+                    <img src="{% static 'images/seanggibu.png' %}" class="link-icon">
+                    고등학교 생기부</a> 
+                </div>
               </div>
-            <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-              <h2 class="text-2xl font-bold mb-4">가산점 제출 서류</h2>
-                <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
-                  <h2 class="text-2xl font-bold mb-4">가족 관련 서류
-                  </h2>
-                    <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A05005&CappBizCD=11800000025&tp_seq=01" class="section5-button" target="_blank">취업 지원 대상자 증명서</a>                
-                    <a href="" class="section5-button" target="_blank">국가 유공자 자녀</a>                
-                    <a href="" class="section5-button" target="_blank">독립 유공자 자녀 / 손자녀</a>                
-                    <a href="https://efamily.scourt.go.kr/pt/PtFrrpApplrInfoInqW.do?menuFg=02" class="section5-button" target="_blank">가족 관계 증명서(다자녀)</a>                
-                </div>
-              
-                <div class="bg-white p-6 rounded-lg shadow-lg mb-6" >
-                  <h2 class="text-2xl font-bold mb-4">시험 / 자격증 / 봉사활동
-                  </h2>
-                  <a href="https://www.gov.kr/portal/service/serviceInfo/176000000004" class="section5-button" target="_blank">공인 영어 성적 증명서 발급</a>                
-                  <a href="https://www.gov.kr/portal/service/serviceInfo/134200000050" class="section5-button" target="_blank">한국사/어 능력 검정 시험 인증서 발급</a>                
-                  <a href="https://mwpt.mma.go.kr/caisBMHS/index_mwps.jsp?menuNo=22315" class="section5-button" target="_blank">병역 진로 설계 군 추천 특기 지원자</a>                
-                  <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button" target="_blank">항공 정비사 / 항공 정비 기초 인력 인증서</a>                
-                  <a href="https://vms.or.kr/auth/certificate.do" class="section5-button" target="_blank">사회 복지 봉사 활동 인증서(VMS)</a>                
-                </div>
-              
-              
             </div>
-          </p>
+            <div class="link-box-2">
+              <h2 class="text-2xl font-bold mb-4 text-center text-gray-600"><가산점 제출 서류></h2>
+                <div class="link-box">
+                  <h2 class="text-2xl font-bold mb-4 text-center text-gray-600">가족 관련 서류
+                  </h2>
+                    <div class="link-box-content">
+                      <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A05005&CappBizCD=11800000025&tp_seq=01" class="section5-button" target="_blank">
+                        <img src="{% static 'images/jobcheck.png' %}" class="link-icon">
+                        취업 지원 대상자</a>                
+                      <a href="" class="section5-button text-center text-gray-600" target="_blank">
+                        <img src="{% static 'images/check.png' %}" class="link-icon">
+                        국가 유공자 자녀</a>                
+                      <a href="" class="section5-button text-center text-gray-600" target="_blank">
+                        <img src="{% static 'images/korea.png' %}" class="link-icon">
+                        독립 유공자 자녀 </a>                
+                      <a href="https://efamily.scourt.go.kr/pt/PtFrrpApplrInfoInqW.do?menuFg=02" class="section5-button" target="_blank">
+                        <img src="{% static 'images/family.png' %}" class="link-icon">
+                        가족 관계 증명서</a>                
+                    </div>
+                </div>
+              
+                <div class="link-box" >
+                  <h2 class="text-2xl font-bold mb-4 text-center text-gray-600">시험 / 자격증 / 봉사활동
+                  </h2>
+                  <div class="link-box-content">
+                    <a href="https://www.gov.kr/portal/service/serviceInfo/176000000004" class="section5-button text-center text-gray-600" target="_blank">
+                      <img src="{% static 'images/engtest.png' %}" class="link-icon">
+                      공인 영어 성적</a>                
+                    <a href="https://www.gov.kr/portal/service/serviceInfo/134200000050" class="section5-button text-center text-gray-600" target="_blank">
+                      <img src="{% static 'images/koreatest.png' %}" class="link-icon">
+                      한국 능력 검정</a>                
+                    <a href="https://mwpt.mma.go.kr/caisBMHS/index_mwps.jsp?menuNo=22315" class="section5-button text-center text-gray-600" target="_blank">
+                      <img src="{% static 'images/telent.png' %}" class="link-icon">
+                      병역 설계 추천</a>                
+                    <a href="https://www.gov.kr/mw/AA020InfoCappView.do?HighCtgCD=A04001;A04002;A05004&CappBizCD=13404000009&tp_seq=01" class="section5-button text-center text-gray-600" target="_blank">
+                      <img src="{% static 'images/airrepair.png' %}" class="link-icon">
+                      항공 정비 기초</a>                
+                    <a href="https://vms.or.kr/auth/certificate.do" class="section5-button text-center text-gray-600" target="_blank ">
+                      <img src="{% static 'images/volunteer.png' %}" class="link-icon">
+                      복지 봉사 활동</a>
+                      <div class="link-box-2"></div>                
+                  </div>
+                </div>
+            </div>
+
+          <div class="footer">
+            <p>© 2024 국민대학교 멋쟁이사자처럼 팀 ETC. All rights reserved.</p>
+        </div>
         </div>
       </div>
     
