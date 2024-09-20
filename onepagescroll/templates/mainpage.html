@@ -133,17 +133,27 @@
         text-align: center;
         background-color: white; 
         padding: 3px; 
-        margin: 3px;
+        margin-bottom: 3px;
         border-radius: 0.5rem; 
         box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.1);
       }
+      .scorebox-1{
+        justify-content: center;
+        text-align: center;
+        background-color: white; 
+        padding: 3px; 
+        margin: 3px;
+        border-radius: 0.5rem; 
+
+      }
       .scorebox select{
         box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+        text-align: center;
       }
       #score-form {
         max-width: 600px;
         width: 90%;
-        padding: 20px;
+        padding: 10px 20px;
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -437,9 +447,9 @@
             <div class="scorebox">
               <label
                 for="license_score"
-                class="block text-lg font-semibold text-gray-700 mb-2">
+                class="block text-lg font-semibold text-blue-800 mb-2">
                 자격/면허 점수</label>
-              <select name="license_score" id="license_score"  class="scorebox" required>
+              <select name="license_score" id="license_score"  class="w-full border-gray-300 rounded-md shadow-sm" required>
                 <option value="0">자격증 없음 (0점)</option>
                 <option value="60">일반자격증 - L2 (60점)</option>
                 <option value="62">일반자격증 - L4, L3 (62점)</option>
@@ -453,10 +463,10 @@
             <div  class="scorebox">
               <label
                 for="attendance_score"
-                class="block text-lg font-semibold text-gray-700 mb-2"
+                class="block text-lg font-semibold text-blue-800 mb-2"
                 >출결 점수</label
               >
-              <select name="attendance_score" id="attendance_score" required>
+              <select name="attendance_score" id="attendance_score" class="w-full border-gray-300 rounded-md shadow-sm" required>
                 <option value="16">결석 7일 이상 (16점)</option>
                 <option value="17">결석 5~6일 (17점)</option>
                 <option value="18">결석 3~4일 (18점)</option>
@@ -468,18 +478,18 @@
             <div  class="scorebox">
               <label
                 for="interview_score"
-                class="block text-lg font-semibold text-gray-700 mb-2"
+                class="block text-lg font-semibold text-blue-800 mb-2"
                 >면접 점수</label
               >
-              <select name="interview_score" id="interview_score"  class="scorebox" required>
+              <select name="interview_score" id="interview_score"  class="w-full border-gray-300 rounded-md shadow-sm" required>
                 <option value="25">면접 평가 부족 (25점)</option>
                 <option value="30">면접 평가 보통 (30점)</option>
                 <option value="35">면접 평가 우수 (35점)</option>
               </select>
             </div>
             <!-- 가산점 -->
-            <div>
-              <label class="block text-lg font-semibold text-gray-700 mb-2"
+            <div class="scorebox-1">
+              <label class="block text-lg font-semibold text-blue-800 mb-2"
                 >가산점(최대 15점)</label
               >
               <div
@@ -593,10 +603,10 @@
               <!-- 드롭다운 옵션들 -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                 <!-- 사회봉사활동 드롭다운 -->
-                <div>
+                <div class="scorebox">
                   <label
                     for="volunteerScore"
-                    class="block text-sm font-semibold text-gray-700 mb-2"
+                    class="block text-sm font-semibold text-blue-800 mb-2"
                     >사회봉사활동 점수</label
                   >
                   <select
@@ -616,10 +626,10 @@
                   </select>
                 </div>
                 <!-- 헌혈 드롭다운 -->
-                <div>
+                <div class="scorebox">
                   <label
                     for="bloodDonationScore"
-                    class="block text-sm font-semibold text-gray-700 mb-2"
+                    class="block text-sm font-semibold text-blue-800 mb-2"
                     >헌혈 점수</label
                   >
                   <select
@@ -639,10 +649,10 @@
                   </select>
                 </div>
                 <!-- TOEIC 선택 -->
-                <div>
+                <div class="scorebox">
                   <label
                     for="toeicScore"
-                    class="block text-sm font-semibold text-gray-700 mb-2"
+                    class="block text-sm font-semibold text-blue-800 mb-2"
                     >TOEIC 점수</label
                   >
                   <select
@@ -656,10 +666,10 @@
                   </select>
                 </div>
                 <!-- 한국사능력검정 선택 -->
-                <div>
+                <div class="scorebox">
                   <label
                     for="koreanHistoryScore"
-                    class="block text-sm font-semibold text-gray-700 mb-2"
+                    class="block text-sm font-semibold text-blue-800 mb-2"
                     >한국사능력검정 점수</label
                   >
                   <select
