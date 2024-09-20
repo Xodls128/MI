@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.http import JsonResponse
+from sklearn.linear_model import LinearRegression
+import numpy as np
 
 
 def onepage_scroll(request):
@@ -15,14 +18,6 @@ def onepage_scroll(request):
     return render(request, 'mainpage.html', {'sections': sections})
 
 
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
-
-import json
-from django.http import JsonResponse
-from sklearn.linear_model import LinearRegression
-import numpy as np
 
 # 예시 커트라인 데이터 (예측 모델용)
 applicant_numbers = np.array([500, 550, 600, 650, 700, 750])
@@ -54,7 +49,7 @@ def calculate_score(request):
         latest_cutoff = 95.0  # 가장 최근 커트라인 (예시)
 
         # 합격 여부 판단
-        result = '합격 예상' if total_score >= predicted_cutoff else '불합격 예상'
+        result = '🎉 합격이 예상됩니다.' if total_score >= predicted_cutoff else '😰불합격이 예상됩니다.'
 
         # 반환할 데이터 구성
         response_data = {

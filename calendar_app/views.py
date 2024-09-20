@@ -14,7 +14,8 @@ def event_list(request):
             'start': event.start_time.strftime('%Y-%m-%dT%H:%M:%S'),
             'end': event.end_time.strftime('%Y-%m-%dT%H:%M:%S') if event.end_time else None,
             'backgroundColor': event.backgroundColor,  # 색상 추가
-            'announcement_date': event.announcement_date.strftime('%Y-%m-%d') if event.announcement_date else None
+            'announcement_date': event.announcement_date.strftime('%Y-%m-%d') if event.announcement_date else None,
+            'applyUrl': event.applyUrl
         })
     return JsonResponse(events_data, safe=False)
 
