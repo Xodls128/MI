@@ -126,16 +126,31 @@
         margin-right: auto;
         margin-left: auto;
       }
+
       /* 폼 스타일 */
+      .scorebox{
+        justify-content: center;
+        text-align: center;
+        background-color: white; 
+        padding: 3px; 
+        margin: 3px;
+        border-radius: 0.5rem; 
+        box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.1);
+      }
+      .scorebox select{
+        box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+      }
       #score-form {
         max-width: 600px;
         width: 90%;
-        margin: 0 auto;
         padding: 20px;
         background-color: #fff;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-top: -40px;
+        margin-top: -80px;
+        margin-right: auto;
+        margin-left: auto;
+        transform: scale(0.9);
       }
       #score-form label {
         font-weight: 600;
@@ -416,16 +431,15 @@
             아래에서 골라 합격을 예측해보세요!
           </p>
         
-          <form method="POST" class="transform scale-70 mx-auto" id="score-form">
+          <form method="POST" id="score-form">
             {% csrf_token %}
             <!-- 자격/면허 점수 -->
-            <div>
+            <div class="scorebox">
               <label
                 for="license_score"
-                class="block text-lg font-semibold text-gray-700 mb-2"
-                >자격/면허 점수</label
-              >
-              <select name="license_score" id="license_score" required>
+                class="block text-lg font-semibold text-gray-700 mb-2">
+                자격/면허 점수</label>
+              <select name="license_score" id="license_score"  class="scorebox" required>
                 <option value="0">자격증 없음 (0점)</option>
                 <option value="60">일반자격증 - L2 (60점)</option>
                 <option value="62">일반자격증 - L4, L3 (62점)</option>
@@ -436,7 +450,7 @@
               </select>
             </div>
             <!-- 출결 점수 -->
-            <div>
+            <div  class="scorebox">
               <label
                 for="attendance_score"
                 class="block text-lg font-semibold text-gray-700 mb-2"
@@ -451,13 +465,13 @@
               </select>
             </div>
             <!-- 면접 점수 -->
-            <div>
+            <div  class="scorebox">
               <label
                 for="interview_score"
                 class="block text-lg font-semibold text-gray-700 mb-2"
                 >면접 점수</label
               >
-              <select name="interview_score" id="interview_score" required>
+              <select name="interview_score" id="interview_score"  class="scorebox" required>
                 <option value="25">면접 평가 부족 (25점)</option>
                 <option value="30">면접 평가 보통 (30점)</option>
                 <option value="35">면접 평가 우수 (35점)</option>
