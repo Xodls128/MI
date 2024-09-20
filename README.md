@@ -4,7 +4,7 @@
 - 편하게 일정과 점수 계산을 해볼 수 있는 서비스이다.
 
 # 기술스택
-html, tailwind css, js, django, gcp
+- html, tailwind css, js, django, gcp
 
 # 참여인원
 - 신경남: 전부 관여
